@@ -1,0 +1,3501 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, viewport-fit=cover"
+		/>
+		<meta name="theme-color" content="#f2e3da" />
+		<meta
+			name="description"
+			content="A scruffy browser companion with dry humour, animated reactions, local memory and optional AI chat. Meet Feral Frank, your bin neighbour."
+		/>
+		<meta name="author" content="Konrad Sroka" />
+		<meta name="application-name" content="Feral Frank" />
+		<link rel="manifest" href="manifest.webmanifest" />
+		<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png" />
+		<meta name="apple-mobile-web-app-title" content="Feral Frank" />
+		<meta name="color-scheme" content="dark" />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Feral Frank" />
+		<meta property="og:locale" content="en_GB" />
+		<meta
+			property="og:title"
+			content="Feral Frank — Your honest little AI companion"
+		/>
+		<meta
+			property="og:description"
+			content="Less explaining. More picking up the thread. A playable browser companion concept for developers, designers and digital people."
+		/>
+		<meta property="og:image" content="og-image-v2.png" />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="1731" />
+		<meta property="og:image:height" content="909" />
+		<meta
+			property="og:image:alt"
+			content="Feral Frank. Your honest little AI companion. Less explaining. More picking up the thread. Playable browser concept."
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="Feral Frank — Your honest little AI companion"
+		/>
+		<meta
+			name="twitter:description"
+			content="Less explaining. More picking up the thread. A playable browser companion concept for digital people."
+		/>
+		<meta name="twitter:image" content="og-image-v2.png" />
+		<meta
+			name="twitter:image:alt"
+			content="Feral Frank, an illustrated raccoon. Your honest little AI companion. Playable browser concept."
+		/>
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+		<!-- Set absolute share-image URLs, og:url and a canonical URL after choosing the public address. -->
+		<title>Frankie’s Beta v0.2 — Feral Frank</title>
+
+		<link rel="stylesheet" href="workspace.css" />
+		<script src="storage.js"></script>
+		<script src="connection.js"></script>
+
+		<script defer src="character.js"></script>
+	</head>
+	<body>
+		<a class="skip-link" href="#q">Skip to chat</a>
+		<div id="splash" class="splash" aria-hidden="true">
+			<svg
+				viewBox="0 0 320 450"
+				xmlns="http://www.w3.org/2000/svg"
+				xmlns:xlink="http://www.w3.org/1999/xlink"
+				focusable="false"
+			>
+				<defs>
+					<lineargradient id="bin-left" x2="1" y2="1">
+						<stop stop-color="#a1b1a8" />
+						<stop offset=".15" stop-color="#6e8278" />
+						<stop offset=".5" stop-color="#60736b" />
+						<stop offset=".54" stop-color="#73877d" />
+						<stop offset="1" stop-color="#424d4b" />
+					</lineargradient>
+					<lineargradient id="bin-right" x2="1" y2="1">
+						<stop stop-color="#62766b" />
+						<stop offset=".25" stop-color="#394c42" />
+						<stop offset=".7" stop-color="#4d6156" />
+						<stop offset="1" stop-color="#2d3533" />
+					</lineargradient>
+					<lineargradient id="bin-rim" x2="0" y2="1">
+						<stop stop-color="#bdc5b6" />
+						<stop offset=".32" stop-color="#81968b" />
+						<stop offset="1" stop-color="#43564d" />
+					</lineargradient>
+					<lineargradient id="bin-inner" x2="0" y2="1">
+						<stop stop-color="#0e1714" />
+						<stop offset="1" stop-color="#34443b" />
+					</lineargradient>
+
+					<image
+						id="splash-ink"
+						href="frank.png"
+						xlink:href="frank.png"
+						width="1222"
+						height="1287"
+					/>
+					<clippath id="splash-wave-cut">
+						<path d="M950 440H1222V900H1040L970 730Z" />
+					</clippath>
+					<clippath id="splash-bottle-cut">
+						<path d="M0 430H330L440 700 340 1010H0Z" />
+					</clippath>
+					<mask id="splash-torso-cut">
+						<rect width="1222" height="1287" fill="white" />
+						<path
+							d="M950 440H1222V900H1040L970 730Z M0 430H330L440 700 340 1010H0Z"
+							fill="black"
+						/>
+					</mask>
+				</defs>
+				<ellipse
+					cx="166"
+					cy="426"
+					rx="118"
+					ry="15"
+					fill="#262530"
+					opacity=".5"
+				/>
+				<!-- Open steel lid and its two hinges sit behind the dark opening. -->
+				<g stroke="#25352d" stroke-width="2" stroke-linejoin="round">
+					<path d="M29 231 46 169 175 127 157 188Z" fill="url(#bin-left)" />
+					<path d="M39 218 51 177 165 140 153 180Z" fill="#40584a" />
+					<path
+						d="m51 177 113-37M39 218l114-38"
+						stroke="#92a398"
+						stroke-width="1.5"
+					/>
+					<path
+						d="m60 165 9 23m53-41 10 22"
+						stroke="#273b30"
+						stroke-width="5"
+					/>
+				</g>
+
+				<!-- The far rim and dark opening sit behind Frank. -->
+				<g stroke="#232827" stroke-width="3" stroke-linejoin="round">
+					<path d="M27 232 157 187 303 233 166 285Z" fill="url(#bin-inner)" />
+					<path
+						d="M27 232 157 187 303 233 299 244 156 200 34 243Z"
+						fill="#697872"
+					/>
+				</g>
+				<g
+					class="splash-trash"
+					stroke="#262631"
+					stroke-width="1.5"
+					stroke-linejoin="round"
+				>
+					<g class="trash-disk">
+						<path d="m113 225 22-4 4 23-22 4Z" fill="#b5a7c9" />
+						<path d="m119 225 11-2 1 8-10 2Z" fill="#e1ded1" />
+						<path d="m120 239 11-2 1 7-11 2Z" fill="#554b66" />
+					</g>
+					<g class="trash-can">
+						<path d="m200 225 8-4 11 5-3 7 3 13-8 3-13-5 4-7Z" fill="#acb7b0" />
+						<path
+							d="m202 230 12 4m-13 4 13 4m-8-17 8 3"
+							fill="none"
+							stroke="#63796e"
+						/>
+					</g>
+					<g class="trash-sock">
+						<path d="m145 222 13-2 3 17 10 1 1 9-15 4-8-8Z" fill="#d4a8ad" />
+						<path d="m146 227 13-2m-7 12 9-2" stroke="#8a6675" />
+					</g>
+					<g class="trash-pizza">
+						<path d="m174 226 27 9-23 19Z" fill="#e1c775" />
+						<path d="m174 226q15 0 27 9l-2 4q-13-9-24-9Z" fill="#bd8e61" />
+						<circle cx="181" cy="237" r="2.5" fill="#ae645d" />
+						<circle cx="187" cy="239" r="2" fill="#ae645d" />
+					</g>
+					<g class="trash-fish" fill="none" stroke="#e0d9be" stroke-width="2">
+						<path d="m109 229 25 7-5-8 12 5-6 6-1-3m-18-9-3 9m12-6-3 9" />
+						<path d="m105 227 9 3-3 6-9-2Z" fill="#c3c5a5" stroke="#333d36" />
+						<circle cx="107" cy="231" r="1" fill="#28392d" />
+					</g>
+				</g>
+
+				<g class="splash-rise">
+					<g transform="translate(69 110) scale(.16)">
+						<use
+							href="#splash-ink"
+							xlink:href="#splash-ink"
+							mask="url(#splash-torso-cut)"
+						/>
+						<g class="splash-bottle">
+							<use
+								href="#splash-ink"
+								xlink:href="#splash-ink"
+								clip-path="url(#splash-bottle-cut)"
+							/>
+						</g>
+
+						<g class="splash-wave">
+							<use
+								href="#splash-ink"
+								xlink:href="#splash-ink"
+								clip-path="url(#splash-wave-cut)"
+							/>
+						</g>
+					</g>
+				</g>
+				<!-- Near faces cover Frank's lower half, preserving the corner perspective. -->
+				<g
+					stroke="#232827"
+					stroke-width="3"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M34 241 166 285 166 426 48 391Z" fill="url(#bin-left)" />
+					<path d="M166 285 297 241 283 389 166 426Z" fill="url(#bin-right)" />
+					<path
+						d="M28 233 166 276 303 233 301 249 166 292 31 249Z"
+						fill="url(#bin-rim)"
+					/>
+					<path
+						d="M36 249 166 290 296 249"
+						fill="none"
+						stroke="#c2c9b6"
+						stroke-width="1.2"
+					/>
+					<path
+						d="m48 267 103 32v105L58 376Z"
+						fill="none"
+						stroke="#344b3e"
+						stroke-width="1.5"
+						opacity=".6"
+					/>
+					<path
+						d="m181 300 101-33-10 108-91 29Z"
+						fill="none"
+						stroke="#708477"
+						stroke-width="1"
+						opacity=".6"
+					/>
+					<path
+						d="m57 382 98 30m22 0 94-30"
+						stroke="#2f4437"
+						stroke-width="5"
+					/>
+					<path
+						d="m64 282 3 71m30-61 2 71m30-61 1 70"
+						stroke="#263d30"
+						stroke-width="3"
+						opacity=".3"
+					/>
+					<path
+						d="m185 310 2 63m32-73-3 61m34-72-5 61"
+						stroke="#92a18b"
+						stroke-width="2"
+						opacity=".3"
+					/>
+					<g fill="#bac1ae" stroke-width=".8">
+						<circle cx="46" cy="259" r="2" />
+						<circle cx="151" cy="298" r="2" />
+						<circle cx="174" cy="298" r="2" />
+						<circle cx="285" cy="261" r="2" />
+						<circle cx="57" cy="383" r="2" />
+						<circle cx="151" cy="410" r="2" />
+						<circle cx="178" cy="409" r="2" />
+						<circle cx="271" cy="381" r="2" />
+					</g>
+					<path
+						d="m72 300 6 2m11 25 9 3m43 44 7 2m49-54 8-3m36 36 9-3m-65 38 7-2"
+						stroke="#bcbaa0"
+						stroke-width="1"
+						opacity=".6"
+					/>
+
+					<path d="M166 292V426" stroke="#b0b5a4" stroke-width="2" />
+					<path
+						d="m58 268 8 101m23-91 6 102m29-93 2 102"
+						stroke="#a3ada0"
+						opacity=".55"
+					/>
+					<path
+						d="m193 297-2 102m39-115-5 103m35-114-8 101"
+						stroke="#1e2925"
+						opacity=".65"
+					/>
+					<path d="m72 345 42 13-2 23-38-12Z" fill="#d4bd83" stroke-width="2" />
+					<path d="m84 355 13 4m-15 4 18 6" stroke-width="2" />
+					<path d="m245 316 23-8-2 19-22 8Z" fill="#303c36" stroke-width="2" />
+					<path d="M60 398v15m207-18v14" stroke-width="9" />
+					<ellipse cx="61" cy="416" rx="9" ry="12" fill="#252a29" />
+					<ellipse cx="265" cy="410" rx="9" ry="12" fill="#252a29" />
+					<path
+						d="m52 286 8 3m56 109 12 3m124-49 14-5"
+						stroke="#bbbc9f"
+						stroke-width="2"
+						opacity=".7"
+					/>
+				</g>
+			</svg>
+		</div>
+
+		<main class="app" id="app">
+			<section class="companion" aria-label="Your companion">
+				<header class="header">
+					<div class="identity">
+						<h1>Feral Frank</h1>
+						<p class="subtitle">
+							<span>Your honest AI buddy.</span
+							><span>Review your days with Frank,</span
+							><span>then wind down and talk shit.</span>
+						</p>
+					</div>
+					<section class="stage" aria-label="Frank and mood">
+						<div class="reactor" id="reactor">
+							<button
+								id="pet"
+								type="button"
+								aria-label="Give Frank a nudge"
+								title="Give Frank a nudge"
+							>
+								<span class="art" id="art">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink"
+										viewBox="0 0 1222 1287"
+										class="pet-rig"
+										role="img"
+										aria-label="Feral Frank, a scruffy raccoon in a beanie, waving with a bagged bottle"
+									>
+										<!-- Konrad Sroka · 2026 · https://github.com/konradbuilds · GPL-3.0-only.
+Original PNG remains intact. SVG masks separate its actual ink; this is not a vector redraw. -->
+										<defs>
+											<image
+												id="original-ink"
+												href="frank.png"
+												xlink:href="frank.png"
+												x="0"
+												y="0"
+												width="1222"
+												height="1287"
+											/>
+											<path
+												id="head-shape"
+												d="M240 -10H1100V445L1000 470L959 594L900 637L813 581L728 578C710 632 675 659 626 662C535 659 467 591 464 514L427 518L380 470L300 440L240 360Z"
+											/>
+											<clippath id="head-cut">
+												<use href="#head-shape" xlink:href="#head-shape" />
+											</clippath>
+											<mask
+												id="body-cut"
+												maskunits="userSpaceOnUse"
+												x="0"
+												y="0"
+												width="1222"
+												height="1287"
+											>
+												<rect width="1222" height="1287" fill="white" />
+												<use
+													href="#head-shape"
+													xlink:href="#head-shape"
+													fill="black"
+													stroke="white"
+													stroke-width="3"
+												/>
+											</mask>
+											<clippath id="left-eye-cut">
+												<path
+													d="M578.59 208.21L566.04 210.30L559.77 212.39L553.50 214.48L548.28 216.57L544.10 218.66L539.92 220.75L535.74 222.84L531.56 224.93L528.42 227.02L525.29 229.11L523.20 231.20L520.07 233.29L517.98 235.38L515.88 237.47L513.79 239.56L511.70 241.65L509.62 243.74L508.57 245.83L508.57 247.92L504.39 250.01L503.35 252.10L502.30 254.19L501.25 256.28L500.21 258.37L498.12 260.46L498.12 262.55L497.07 264.64L496.03 266.73L494.99 268.82L494.99 270.91L493.94 273.00L493.94 275.09L492.89 277.18L492.89 279.27L492.89 281.36L491.85 283.45L491.85 285.54L491.85 287.63L492.89 289.72L492.89 291.81L492.89 293.90L493.94 295.99L493.94 298.08L494.99 300.17L496.03 302.26L497.07 304.35L497.07 306.44L499.17 308.53L500.21 310.62L501.25 312.71L503.35 314.80L504.39 316.89L506.48 318.98L508.57 321.07L510.66 323.16L513.79 325.25L515.88 327.34L519.02 329.43L524.25 331.52L529.47 333.61L535.74 335.70L539.92 336.75L562.91 336.75L570.23 335.70L578.59 333.61L583.81 331.52L589.03 329.43L593.22 327.34L596.35 325.25L600.53 323.16L602.62 321.07L605.75 318.98L607.85 316.89L610.98 314.80L612.02 312.71L614.12 310.62L616.21 308.53L618.29 306.44L619.34 304.35L621.43 302.26L622.48 300.17L623.52 298.08L625.61 295.99L626.65 293.90L627.70 291.81L628.75 289.72L628.75 287.63L629.79 285.54L630.84 283.45L631.88 281.36L632.92 279.27L632.92 277.18L633.97 275.09L635.01 273.00L635.01 270.91L636.06 268.82L636.06 266.73L637.11 264.64L637.11 262.55L637.11 260.46L637.11 258.37L638.15 256.28L638.15 254.19L638.15 252.10L637.11 250.01L637.11 247.92L637.11 245.83L636.06 243.74L636.06 241.65L635.01 239.56L633.97 237.47L632.92 235.38L631.88 233.29L630.84 231.20L628.75 229.11L625.61 227.02L623.52 224.93L623.52 222.84L621.43 220.75L619.34 218.66L616.21 216.57L612.02 214.48L607.85 212.39L602.62 210.30L593.22 208.21Z"
+												/>
+											</clippath>
+											<clippath id="right-eye-cut">
+												<path
+													d="M699.38 337.15L697.29 339.25L696.25 341.33L695.20 343.43L694.15 345.51L693.11 347.61L692.07 349.69L691.02 351.79L689.98 353.88L689.98 355.97L688.93 358.06L688.93 360.14L688.93 362.24L688.93 364.32L688.93 366.42L688.93 368.50L688.93 370.60L688.93 372.69L688.93 374.77L688.93 376.87L688.93 378.95L689.98 381.05L689.98 383.13L691.02 385.23L692.07 387.31L693.11 389.40L694.15 391.50L695.20 393.58L696.25 395.68L698.34 397.76L699.38 399.86L701.47 401.94L702.51 404.03L704.61 406.12L709.83 408.21L712.97 410.31L712.97 412.39L717.14 414.49L721.33 416.57L726.55 418.67L734.91 420.75L750.59 420.75L757.90 418.67L763.12 416.57L767.30 414.49L769.39 412.39L772.53 410.31L773.58 408.21L775.66 406.12L777.75 404.03L778.80 401.94L779.85 399.86L780.89 397.76L781.93 395.68L782.98 393.58L784.02 391.50L784.02 389.40L782.98 387.31L781.93 385.23L780.89 383.13L779.85 381.05L777.75 378.95L776.71 376.87L774.62 374.77L773.58 372.69L771.49 370.60L769.39 368.50L767.30 366.42L765.22 364.32L763.12 362.24L759.99 360.14L757.90 358.06L754.76 355.97L751.63 353.88L748.50 351.79L744.32 349.69L740.13 347.61L737.00 345.51L731.77 343.43L724.46 341.33L717.14 339.25L703.56 337.15Z"
+												/>
+											</clippath>
+											<clippath id="left-pupil-clear">
+												<rect x="518" y="260" width="34" height="36" />
+											</clippath>
+											<clippath id="left-pupil-cut">
+												<path
+													id="left-pupil-shape"
+													d="M519.7 282.5L520.9 278.0L529.2 267.9L532.7 264.6L538.6 262.3L543.3 262.3L545.7 263.4L546.9 264.6L548.1 266.8L549.2 270.2L549.2 272.4L548.1 275.8L543.3 284.7L541.0 288.1L537.4 290.3L530.4 293.7L526.8 293.7L522.1 291.4L519.7 284.7Z"
+												/>
+											</clippath>
+											<clippath id="right-pupil-clear">
+												<rect x="690" y="353" width="24" height="28" />
+											</clippath>
+											<clippath id="right-pupil-cut">
+												<path
+													id="right-pupil-shape"
+													d="M690.3 368.2L691.4 364.8L695.0 359.2L697.3 355.9L699.7 354.7L703.2 353.6L709.1 353.6L711.5 355.9L712.7 358.1L712.7 364.8L709.1 373.8L706.8 376.0L703.2 378.3L700.9 379.4L696.2 379.4L693.8 378.3L691.4 376.0L690.3 373.8Z"
+												/>
+											</clippath>
+											<clippath id="mouth-cut">
+												<path
+													d="M506 424C559 454 634 474 718 446C738 488 664 528 591 504C546 491 520 467 506 424Z"
+												/>
+											</clippath>
+										</defs>
+										<g id="whole-breath">
+											<g id="body-weight" transform="rotate(0 640 1180)">
+												<use
+													href="#original-ink"
+													xlink:href="#original-ink"
+													mask="url(#body-cut)"
+												/>
+											</g>
+											<g id="head-turn" transform="rotate(0 650 630)">
+												<use
+													href="#original-ink"
+													xlink:href="#original-ink"
+													clip-path="url(#head-cut)"
+												/>
+												<g id="mouth-talk">
+													<use
+														href="#original-ink"
+														xlink:href="#original-ink"
+														clip-path="url(#mouth-cut)"
+													/>
+												</g>
+												<g id="left-eye" clip-path="url(#left-eye-cut)">
+													<g clip-path="url(#left-pupil-clear)">
+														<rect
+															x="518"
+															y="260"
+															width="34"
+															height="36"
+															fill="#fcf2cb"
+														/>
+														<use
+															href="#original-ink"
+															xlink:href="#original-ink"
+															transform="translate(-36 0)"
+														/>
+													</g>
+													<g id="left-pupil">
+														<use
+															href="#original-ink"
+															xlink:href="#original-ink"
+															clip-path="url(#left-pupil-cut)"
+														/>
+													</g>
+													<path
+														id="left-lid"
+														d="M480 190H655V192Q570 184 480 192Z"
+														fill="#48443d"
+														stroke="#292626"
+														stroke-width="3.6"
+														stroke-linejoin="round"
+													/>
+													<path
+														id="left-lower-lid"
+														d="M480 350H655V350H480Z"
+														fill="#48443d"
+													/>
+													<path
+														id="left-crease"
+														d="M495 278C535 284 593 284 638 278"
+														fill="none"
+														stroke="#262525"
+														stroke-width="5"
+														stroke-linecap="round"
+														opacity="0"
+													/>
+												</g>
+												<g id="right-eye" clip-path="url(#right-eye-cut)">
+													<g clip-path="url(#right-pupil-clear)">
+														<rect
+															x="690"
+															y="353"
+															width="24"
+															height="28"
+															fill="#fcf3cc"
+														/>
+														<use
+															href="#original-ink"
+															xlink:href="#original-ink"
+															transform="translate(-34 -12)"
+														/>
+													</g>
+													<g id="right-pupil">
+														<use
+															href="#original-ink"
+															xlink:href="#original-ink"
+															clip-path="url(#right-pupil-cut)"
+														/>
+													</g>
+													<path
+														id="right-lid"
+														d="M675 317H803V319Q745 313 675 319Z"
+														fill="#48443d"
+														stroke="#292626"
+														stroke-width="3.6"
+														stroke-linejoin="round"
+													/>
+													<path
+														id="right-lower-lid"
+														d="M675 435H803V435H675Z"
+														fill="#48443d"
+													/>
+													<path
+														id="right-crease"
+														d="M690 384Q737 394 784 385"
+														fill="none"
+														stroke="#262525"
+														stroke-width="5"
+														stroke-linecap="round"
+														opacity="0"
+													/>
+												</g>
+											</g>
+										</g>
+										<g class="lasers">
+											<path
+												d="M534 278L160 1180 370 1180ZM702 367L1010 1180 1220 1180Z"
+												fill="#e75959"
+												opacity=".17"
+											/>
+											<path
+												d="M534 278L266 1180M702 367L1110 1180"
+												stroke="#ef7771"
+												stroke-width="7"
+												opacity=".7"
+											/>
+											<path
+												d="M534 278L266 1180M702 367L1110 1180"
+												stroke="#f5d4bb"
+												stroke-width="2"
+											/>
+										</g>
+									</svg>
+								</span>
+							</button>
+						</div>
+					</section>
+					<div class="header-actions">
+						<span class="feed-title">Click to feed:</span>
+						<div class="feed-controls">
+							<div class="feed-item">
+								<button
+									class="prop"
+									id="drink"
+									type="button"
+									aria-pressed="false"
+									title="bottle"
+									aria-label="bottle"
+								>
+									<svg
+										viewBox="0 0 42 44"
+										fill="none"
+										stroke="#39323a"
+										stroke-width="1.6"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										aria-hidden="true"
+										focusable="false"
+									>
+										<path d="M15 17V5H24V17L31 25V39H9V25Z" fill="#527752" />
+										<path
+											d="M8 23L13 26 20 23 25 27 33 22 31 42H9Z"
+											fill="#ad835b"
+										/>
+										<path d="M16 29L14 38M24 31L26 40M15 5H24" />
+									</svg></button
+								><span class="feed-label">drinks</span>
+							</div>
+							<div class="feed-item">
+								<button
+									class="prop"
+									id="joint"
+									type="button"
+									aria-pressed="false"
+									title="joint"
+									aria-label="joint"
+								>
+									<svg
+										viewBox="0 0 42 44"
+										fill="none"
+										stroke="#39323a"
+										stroke-width="1.6"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										aria-hidden="true"
+										focusable="false"
+									>
+										<path
+											d="M17 29L10 26 3 17 13 19 8 6 19 16 21 2 24 17 35 7 30 21 39 18 33 29 24 32 23 39"
+											fill="#617d56"
+											stroke="#9baa7d"
+										/>
+										<path d="M6 34L31 27 35 33 10 41Z" fill="#d0c8ad" />
+										<path d="M31 27L36 27 39 33 35 34Z" fill="#ba745a" />
+										<path d="M37 21Q31 16 36 12" stroke="#aaa39a" />
+									</svg></button
+								><span class="feed-label">joints</span>
+							</div>
+						</div>
+					</div>
+				</header>
+				<div class="bars" aria-label="Frank’s needs">
+					<div>
+						<span class="bar-label" id="label-att">thankful</span>
+						<div
+							class="track"
+							id="meter-att"
+							role="meter"
+							aria-label="thankfulness"
+							aria-valuemin="0"
+							aria-valuemax="100"
+							aria-valuenow="0"
+						>
+							<div class="fill" id="fAtt"></div>
+						</div>
+					</div>
+					<div>
+						<span class="bar-label" id="label-fed">energy</span>
+						<div
+							class="track"
+							id="meter-fed"
+							role="meter"
+							aria-label="energy"
+							aria-valuemin="0"
+							aria-valuemax="100"
+							aria-valuenow="0"
+						>
+							<div class="fill" id="fFed"></div>
+						</div>
+					</div>
+					<div>
+						<span class="bar-label" id="label-ease">ease of mind</span>
+						<div
+							class="track"
+							id="meter-ease"
+							role="meter"
+							aria-label="ease of mind"
+							aria-valuemin="0"
+							aria-valuemax="100"
+							aria-valuenow="0"
+						>
+							<div class="fill" id="fEase"></div>
+						</div>
+					</div>
+				</div>
+				<div class="companion-more">
+					<section class="setup-summary" aria-labelledby="setup-title">
+						<h2 id="setup-title">HOW TO SET UP</h2>
+						<p>Try the free demo. Connect your AI when you’re ready to chat.</p>
+						<a href="index.html" title="Read about Feral Frank"
+							>About the idea →</a
+						>
+					</section>
+					<div class="reflection">
+						<button type="button" data-open-notes="">
+							Notes and ideas <span aria-hidden="true">→</span>
+						</button>
+					</div>
+				</div>
+			</section>
+			<p id="say" class="sr-only" role="status"></p>
+			<section class="chat-workspace" aria-label="Chat and work">
+				<section class="conversation" aria-label="Conversation">
+					<div class="chat-heading">
+						<button
+							id="memory-open"
+							class="settings-toggle toolbar-button"
+							type="button"
+							title="Open settings, memory and app controls"
+							aria-label="Open settings and memory"
+							aria-haspopup="dialog"
+							aria-controls="memory-panel"
+							aria-expanded="false"
+						>
+							<svg
+								viewBox="0 0 24 24"
+								width="22"
+								height="22"
+								aria-hidden="true"
+								class="settings-cog"
+							>
+								<path
+									d="M19.83,10.98 L22.08,12.67 L21.75,14.62 L19.08,15.50 L18.26,16.81 L18.65,19.60 L17.04,20.75 L14.53,19.48 L13.02,19.83 L11.33,22.08 L9.38,21.75 L8.50,19.08 L7.19,18.26 L4.40,18.65 L3.25,17.04 L4.52,14.53 L4.17,13.02 L1.92,11.33 L2.25,9.38 L4.92,8.50 L5.74,7.19 L5.35,4.40 L6.96,3.25 L9.47,4.52 L10.98,4.17 L12.67,1.92 L14.62,2.25 L15.50,4.92 L16.81,5.74 L19.60,5.35 L20.75,6.96 L19.48,9.47 Z"
+									fill="currentColor"
+									stroke="currentColor"
+									stroke-width="1.2"
+									stroke-linejoin="round"
+								/>
+								<circle cx="12.3" cy="11.7" r="3.7" fill="var(--panel)" /></svg
+							><span>Settings</span>
+						</button>
+					</div>
+					<div
+						class="log"
+						id="log"
+						role="log"
+						tabindex="0"
+						aria-label="Conversation with Frank"
+						aria-live="polite"
+						aria-relevant="additions"
+						aria-atomic="false"
+					></div>
+					<div
+						id="message-actions"
+						class="chat-tools delete-options"
+						role="group"
+						aria-label="Delete message"
+						aria-describedby="delete-hint"
+						hidden
+					>
+						<p id="delete-hint">
+							Remove this message only, or its matching saved facts and snippets
+							too. Personality stays.
+						</p>
+						<button
+							type="button"
+							data-action="delete"
+							title="Delete this message from chat; keep memory"
+						>
+							Chat only
+						</button>
+						<button
+							type="button"
+							data-action="delete-memory"
+							title="Delete this message and its matching saved facts and snippets"
+						>
+							Chat + memory
+						</button>
+						<span></span
+						><button
+							type="button"
+							data-action="close"
+							aria-label="Close delete options"
+							title="Close delete options"
+						>
+							×
+						</button>
+					</div>
+
+					<div id="chat-notice" class="chat-tools" hidden>
+						<span id="chat-notice-text" role="status"></span>
+						<button
+							type="button"
+							id="chat-undo"
+							title="Restore the last deleted message"
+						>
+							Undo
+						</button>
+						<button
+							type="button"
+							id="chat-notice-close"
+							aria-label="Dismiss deletion notice"
+							title="Dismiss deletion notice"
+						>
+							×
+						</button>
+					</div>
+				</section>
+				<footer class="footer">
+					<div id="reply-draft" class="reply-draft" hidden>
+						<div>
+							<strong id="reply-name"></strong><span id="reply-text"></span>
+						</div>
+						<button
+							type="button"
+							id="reply-cancel"
+							title="Cancel reply; keep your draft"
+							aria-label="Cancel reply"
+						>
+							×
+						</button>
+					</div>
+
+					<div
+						id="storage-warning"
+						class="ai-budget-notice"
+						role="status"
+						hidden
+					>
+						Saved-data limit reached or storage blocked. Some new changes last
+						only in this tab. Open Saved data in Settings.
+					</div>
+					<div
+						id="ai-budget-notice"
+						class="ai-budget-notice"
+						role="status"
+						hidden
+					></div>
+
+					<form class="composer" id="f">
+						<span class="connection"
+							><button
+								type="button"
+								id="ai-status"
+								aria-describedby="ai-tooltip"
+								title="AI is off"
+							>
+								<span class="led" aria-hidden="true"></span
+								><span class="sr-only" id="ai-status-label"
+									>AI is off</span
+								></button
+							><span id="ai-tooltip" role="tooltip" hidden
+								>AI is off</span
+							></span
+						>
+						<label class="sr-only" id="q-label" for="q">Message Frank</label
+						><input
+							id="q"
+							disabled
+							name="message"
+							type="text"
+							dir="auto"
+							placeholder="Alright, Frank…"
+							autocomplete="off"
+							enterkeyhint="send"
+							maxlength="2000"
+						/><button
+							id="send"
+							disabled
+							type="submit"
+							aria-label="Send message"
+							title="Send message"
+						>
+							<svg
+								viewBox="0 0 24 24"
+								width="20"
+								height="20"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								aria-hidden="true"
+							>
+								<path d="M12 19V5M6 11L12 5 18 11" />
+							</svg>
+						</button>
+					</form>
+				</footer>
+			</section>
+			<aside class="my-stuff" id="my-stuff" aria-labelledby="stuff-title">
+				<div class="stuff-heading">
+					<h2 id="stuff-title" tabindex="-1">Notes and ideas</h2>
+					<button type="button" id="stuff-close" title="Close Notes and ideas">
+						Close
+					</button>
+				</div>
+				<p class="small-note">A little less to carry in your head.</p>
+				<form id="scratch-form">
+					<label for="scratch-input">Save a thought for later</label
+					><textarea
+						id="scratch-input"
+						rows="3"
+						maxlength="600"
+						placeholder="Pick this up tomorrow…"
+						required
+					></textarea
+					><button type="submit">Keep this</button>
+				</form>
+				<p id="scratch-status" class="small-note" role="status"></p>
+				<ul id="scratch-list"></ul>
+				<details>
+					<summary>Where does this go?</summary>
+					<p>
+						Only this browser, on this device. These notes are separate from
+						chat memory and aren’t sent to AI. Keep up to six notes, 600
+						characters each. Deleting a note removes it immediately.
+					</p>
+				</details>
+				<a class="home-link" href="index.html">About Frank →</a>
+			</aside>
+		</main>
+		<section
+			id="memory-panel"
+			class="memory-panel"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="memory-heading"
+			hidden
+		>
+			<div class="memory-card">
+				<div class="settings-heading">
+					<h2 id="memory-heading" tabindex="-1">Settings &amp; memory</h2>
+					<button
+						id="settings-close"
+						type="button"
+						title="Close settings"
+						aria-label="Close settings"
+					>
+						×
+					</button>
+				</div>
+				<p class="settings-version">Feral Frank v1.5.0 · concept</p>
+
+				<section
+					id="connect-setup"
+					class="connect-setup"
+					aria-labelledby="connect-setup-title"
+				>
+					<h3 id="connect-setup-title" tabindex="-1">Connect your AI</h3>
+					<p id="connect-hosting-help" hidden>
+						Frank needs your own copy to chat: a key cannot be kept private on a
+						public demo. Download the app, put it on PHP hosting or run it
+						locally, then add your key there.
+						<a href="SETUP.md" target="_blank" rel="noopener"
+							>Read the setup steps ↗</a
+						>
+					</p>
+					<div id="connect-key-step">
+						<label class="field-label" for="connect-provider">Which AI?</label
+						><select id="connect-provider">
+							<option value="groq">Groq · free tier</option>
+							<option value="google">Google Gemini · free tier</option>
+							<option value="nvidia">NVIDIA NIM · limited free access</option>
+							<option value="deepseek">DeepSeek · paid API</option>
+							<option value="openrouter">
+								OpenRouter · free &amp; paid models
+							</option>
+							<option value="openai">OpenAI · paid API</option>
+							<option value="anthropic">Anthropic · paid API</option>
+						</select>
+						<label class="field-label" for="connect-key">API key</label
+						><input
+							id="connect-key"
+							type="password"
+							autocomplete="off"
+							spellcheck="false"
+							placeholder="Paste your key"
+							maxlength="1000"
+						/>
+						<button id="connect-save" type="button" class="primary-action">
+							Save key
+						</button>
+						<p
+							id="connect-setup-feedback"
+							class="setup-feedback"
+							role="status"
+						></p>
+
+						<h4 class="setup-subhead">Get your API key</h4>
+						<p class="setup-help" id="provider-cost" role="status">
+							Free tier available · usage limits apply.
+						</p>
+						<a
+							id="connect-key-link"
+							class="provider-button"
+							href="https://console.groq.com/keys"
+							target="_blank"
+							rel="noopener"
+							>Get a key from Groq ↗</a
+						>
+						<p class="setup-note">
+							Want Claude, GPT, Gemini, Grok or Kimi from one key? Pick
+							OpenRouter above. Frank picks a chat model for you; change it any
+							time in Advanced AI settings. Your key is stored on your own
+							server, never in the browser.
+						</p>
+					</div>
+				</section>
+				<details class="settings-group" id="character-settings">
+					<summary>Frank’s character</summary>
+					<p>One Frank. Fine-tune how he talks.</p>
+					<div class="character-sliders">
+						<div class="character-control">
+							<div>
+								<label for="character-length">Reply length</label
+								><output
+									for="character-length"
+									id="character-length-value"
+								></output>
+							</div>
+							<input
+								type="range"
+								id="character-length"
+								min="0"
+								max="2"
+								step="1"
+								value="0"
+								aria-describedby="character-length-hint"
+							/>
+							<p id="character-length-hint" class="character-hint"></p>
+						</div>
+						<div class="character-control">
+							<div>
+								<label for="character-humour">Humour</label
+								><output
+									for="character-humour"
+									id="character-humour-value"
+								></output>
+							</div>
+							<input
+								type="range"
+								id="character-humour"
+								min="0"
+								max="2"
+								step="1"
+								value="1"
+								aria-describedby="character-humour-hint"
+							/>
+							<p id="character-humour-hint" class="character-hint"></p>
+						</div>
+						<div class="character-control">
+							<div>
+								<label for="character-roughness">Roughness</label
+								><output
+									for="character-roughness"
+									id="character-roughness-value"
+								></output>
+							</div>
+							<input
+								type="range"
+								id="character-roughness"
+								min="0"
+								max="2"
+								step="1"
+								value="1"
+								aria-describedby="character-roughness-hint"
+							/>
+							<p id="character-roughness-hint" class="character-hint"></p>
+						</div>
+						<div class="character-control">
+							<div>
+								<label for="character-opinion">Opinionated</label
+								><output
+									for="character-opinion"
+									id="character-opinion-value"
+								></output>
+							</div>
+							<input
+								type="range"
+								id="character-opinion"
+								min="0"
+								max="2"
+								step="1"
+								value="1"
+								aria-describedby="character-opinion-hint"
+							/>
+							<p id="character-opinion-hint" class="character-hint"></p>
+						</div>
+					</div>
+					<label for="character-notes"
+						>Anything else? <span class="character-hint">Optional</span></label
+					><textarea
+						id="character-notes"
+						maxlength="600"
+						rows="3"
+						placeholder="Skip pep talks. Use bullets for technical answers."
+						aria-describedby="character-notes-help"
+					></textarea>
+					<p id="character-notes-help" class="character-hint">
+						Writing preferences only. Personal facts belong in Memory.
+					</p>
+					<div class="character-example">
+						<p class="character-hint">Example only · no AI used</p>
+						<p>You: “I’ve been fixing tiny bugs all day.”</p>
+						<p id="character-example"></p>
+						<p class="character-hint">
+							Your note applies to AI replies, not this example.
+						</p>
+					</div>
+					<button id="character-try" type="button" disabled>
+						Try with my AI
+					</button>
+					<p class="character-hint">
+						One AI request; may cost credits. Not saved to chat or memory.
+					</p>
+					<p id="character-result" role="status" hidden></p>
+					<button id="character-reset" type="button">Reset adjustments</button>
+					<p id="character-status" role="status" class="character-hint"></p>
+					<details class="settings-help">
+						<summary>What stays Frank?</summary>
+						<p>
+							Honest, useful and warm. For big decisions: facts, trade-offs and
+							useful questions. Your decision, with a reasoned view when
+							helpful.
+						</p>
+						<p>
+							These settings change his writing, not his abilities or access.
+							Memory stays separate. AI can still get things wrong.
+						</p>
+					</details>
+				</details>
+
+				<button
+					type="button"
+					id="stuff-open"
+					class="toolbar-button"
+					hidden
+					aria-expanded="false"
+					aria-controls="my-stuff"
+				>
+					Notes and ideas →
+				</button>
+
+				<details class="settings-group" id="ai-settings">
+					<summary>Advanced AI settings</summary>
+
+					<label for="ai-provider">AI provider</label
+					><select id="ai-provider">
+						<option value="local">Not connected</option>
+						<option value="groq">Groq · free tier available</option>
+						<option value="openai">OpenAI · paid API</option>
+						<option value="anthropic">Anthropic · paid API</option>
+						<option value="nvidia">NVIDIA · NIM</option>
+						<option value="google">Google · Gemini, free tier available</option>
+						<option value="deepseek">DeepSeek · paid API</option>
+						<option value="openrouter">
+							OpenRouter · free &amp; paid models
+						</option>
+						<option value="ollama">Local · Ollama</option>
+					</select>
+					<p id="ai-setup-status" role="status"></p>
+					<p class="settings-help">
+						Need installation help?
+						<a href="SETUP.md" target="_blank" rel="noopener"
+							>Read the setup guide ↗</a
+						>
+					</p>
+					<div id="ai-fields" hidden>
+						<div id="ai-key-row">
+							<label for="ai-key">Provider API key</label
+							><input
+								type="password"
+								id="ai-key"
+								autocomplete="off"
+								spellcheck="false"
+								placeholder="Paste once; blank keeps saved key"
+							/><button type="button" id="ai-forget-key">
+								Remove saved key
+							</button>
+						</div>
+						<label for="ai-model">Model ID</label
+						><input
+							id="ai-model"
+							list="ai-model-options"
+							autocomplete="off"
+							spellcheck="false"
+							placeholder="Load models or enter a model ID"
+							maxlength="120"
+						/><datalist id="ai-model-options"></datalist>
+
+						<details class="settings-help">
+							<summary>Usage limits</summary>
+							<label for="ai-daily-limit">Daily attempt cap (UTC)</label
+							><input
+								id="ai-daily-limit"
+								type="number"
+								min="1"
+								max="500"
+								value="50"
+							/><label for="ai-token-limit">Maximum reply tokens</label
+							><input
+								id="ai-token-limit"
+								type="number"
+								min="128"
+								max="1024"
+								value="512"
+							/>
+							<p id="ai-usage" role="status"></p>
+						</details>
+						<details class="settings-help">
+							<summary>Key storage &amp; privacy</summary>
+							<p>
+								These limits reduce usage; they are not a euro spending
+								guarantee. Failed attempts count. No automatic retries. Set a
+								spending limit with your provider too.
+							</p>
+							<p>
+								Keys stay in a private file on your server, outside the website.
+								The file is not encrypted. Your selected provider receives your
+								message, up to 12 recent messages, the quoted message and
+								relevant saved memory. Notes and ideas stays private unless you
+								bring a note into chat.
+							</p>
+						</details>
+						<div class="ai-actions">
+							<button type="button" id="ai-save">Save &amp; connect</button
+							><button type="button" id="ai-models">Load models</button>
+						</div>
+					</div>
+				</details>
+				<details class="settings-group">
+					<summary>Memory &amp; privacy</summary>
+					<p id="memory-storage">
+						Saved on this device. AI receives relevant memories when enabled.
+					</p>
+					<label
+						><input type="checkbox" id="remember-enabled" /> Remember what I
+						tell Frank</label
+					>
+					<form id="memory-form">
+						<label
+							>Name<input
+								id="memory-name"
+								title="Name Frank should use for you"
+								maxlength="80" /></label
+						><label
+							>Work<input
+								id="memory-job"
+								title="Your work, in your own words"
+								maxlength="120" /></label
+						><label
+							>Country / place<input
+								id="memory-country"
+								title="Your country or place"
+								maxlength="100" /></label
+						><label
+							>Language<input
+								id="memory-language"
+								title="Your preferred language"
+								maxlength="80" /></label
+						><label
+							>Friends’ names<input
+								id="memory-friends"
+								title="Names you want Frank to remember"
+								maxlength="300" /></label
+						><label
+							>Notes — one per line<textarea
+								id="memory-notes"
+								title="Personal notes Frank may remember"
+								maxlength="2400"
+							></textarea>
+						</label>
+						<button
+							type="button"
+							id="chat-clear"
+							title="Clear all chat on this device; keep memory (confirmation follows)"
+						>
+							Clear chat — keep memory
+						</button>
+
+						<div class="memory-actions">
+							<button
+								type="submit"
+								title="Save these memory settings on this device"
+							>
+								Save memory</button
+							><button
+								type="button"
+								id="memory-export"
+								title="Download memory and chat as JSON"
+							>
+								Export history</button
+							><button
+								type="button"
+								id="memory-forget"
+								title="Clear personal memory and chat (confirmation follows)"
+							>
+								Forget personal details</button
+							><button
+								type="button"
+								id="memory-close"
+								title="Close settings and return to Frank"
+							>
+								Close
+							</button>
+						</div>
+					</form>
+
+					<p id="memory-feedback" role="status"></p>
+					<details class="settings-help">
+						<summary>Details</summary>
+						<p>
+							Tell him “my name is…”, “I work as…”, “my friend is…” or “remember
+							that…”. Editing facts keeps old chat. Forget memory &amp; chat
+							clears both.
+						</p>
+						<p>
+							Use the Reply or Delete icons. Swipe left for deletion choices,
+							right to reply. The trash icon opens chat-only or matching-memory
+							deletion.
+						</p>
+					</details>
+				</details>
+
+				<details class="settings-group" id="storage-settings">
+					<summary>Storage &amp; history</summary>
+
+					<label for="storage-level">History profile</label
+					><input
+						id="storage-level"
+						type="range"
+						min="0"
+						max="3"
+						step="1"
+						value="1"
+						aria-describedby="storage-profile storage-preview"
+					/><output id="storage-profile" for="storage-level"></output>
+					<p id="storage-used"></p>
+					<p id="runtime-usage"></p>
+					<label
+						><input id="usage-tab" type="checkbox" /> Show live usage in this
+						browser tab’s title</label
+					>
+
+					<p id="storage-preview" role="status"></p>
+					<div class="ai-actions">
+						<button type="button" id="storage-apply">Apply profile</button
+						><button type="button" id="storage-export">
+							Export chat &amp; memory
+						</button>
+					</div>
+
+					<p id="storage-feedback" role="status"></p>
+					<details class="settings-help">
+						<summary>Details</summary>
+						<p>
+							Choose how much chat history Frank keeps. This controls Frank’s
+							saved text, not browser RAM, AI intelligence or the amount sent to
+							a model.
+						</p>
+						<p>
+							Saved text and message count are useful checks. Where available,
+							JavaScript heap is an approximate diagnostic, not total tab RAM.
+							It excludes artwork, browser overhead and some other memory. Frank
+							cannot enforce a RAM cap. Updates pause when this tab is hidden.
+						</p>
+						<p>
+							Low: 256 KiB / 40 messages. Medium (default): 2 MiB / 200. High: 3
+							MiB / 500. Extra high: 4 MiB / 1,000. These are ceilings; Frank
+							does not allocate that much just because you select it. More
+							messages can make loading slower.
+						</p>
+						<p>
+							The cap includes Frank’s chat, facts, notes and preferences. Size
+							is estimated from stored UTF-16 text; your browser may impose a
+							smaller quota. Offline artwork/cache and private provider keys are
+							separate. Other websites’ data is untouched.
+						</p>
+						<p>
+							Oldest chat messages roll off first. Saved personal facts and
+							scratch notes are protected; if those cannot fit, new saves stop
+							and a warning appears. Lowering a profile shows exactly how many
+							current messages would be removed before you apply it. Deleting
+							chat does not erase facts already kept in memory.
+						</p>
+					</details>
+				</details>
+
+				<details class="settings-group">
+					<summary>App &amp; install</summary>
+					<section class="mobile-options" aria-label="App options">
+						<div class="mobile-actions">
+							<button
+								id="install-app"
+								type="button"
+								title="Install Frank on your home screen"
+							>
+								Install app</button
+							><button
+								id="app-update"
+								type="button"
+								title="Save the current chat and reload the updated app"
+								hidden
+							>
+								Update app
+							</button>
+						</div>
+						<p id="offline-status" role="status">Checking offline support…</p>
+						<label
+							><input id="haptics-enabled" type="checkbox" /> Gentle
+							haptics</label
+						>
+						<p id="haptics-note">
+							Optional vibration after taps, where supported.
+						</p>
+						<p id="mobile-status" role="status"></p>
+					</section>
+				</details>
+				<details class="settings-group" id="local-guide">
+					<summary>How Frank works</summary>
+					<p>
+						Add an AI API key in AI connection. Frank checks your key and model
+						before enabling chat.
+					</p>
+					<p>
+						Your model receives Frank’s character brief, recent chat and
+						relevant saved memories. Review or delete memories here at any time.
+						Notes stay on this device unless you bring them into chat.
+					</p>
+					<p>
+						Public previews are scripted and clearly labelled. Live chat
+						requires your own installation and AI connection. Frank’s moods are
+						fictional; stored memories are editable data, not model training.
+					</p>
+					<button type="button" id="guide-connect">Set up AI connection</button>
+					<p>
+						Entertainment, with fictional needs and moods. No analytics. Browser
+						storage holds your chat and memory; clearing browser data removes
+						them. With AI enabled, your message, recent chat and selected
+						memories go to the configured backend.
+					</p>
+				</details>
+				<p>
+					<a href="LICENSE.txt" title="Read the GNU GPL version 3 license"
+						>GPL v3.0</a
+					>
+				</p>
+				<div class="creator-line" aria-label="Creator links">
+					<span>Made by</span
+					><a
+						class="creator-btn creator-btn-konrad"
+						href="https://konradbuilds.github.io/"
+						target="_blank"
+						rel="noopener"
+						title="Visit Konrad’s website (new tab)"
+						><span class="konrad-mark" aria-hidden="true"
+							><span class="konrad-k">K</span></span
+						><span>Konrad</span></a
+					><a
+						class="creator-btn creator-btn-github"
+						href="https://github.com/konradbuilds"
+						target="_blank"
+						rel="noopener"
+						title="Visit Konrad on GitHub (new tab)"
+						><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<path
+								fill="currentColor"
+								d="M12 .7a11.3 11.3 0 0 0-3.57 22c.56.1.77-.24.77-.54v-2.1c-3.14.68-3.8-1.33-3.8-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.28-5.14-1.25-5.14-5.58 0-1.23.44-2.24 1.16-3.03-.12-.28-.5-1.43.11-2.99 0 0 .95-.3 3.11 1.16A10.8 10.8 0 0 1 12 6.16c.96 0 1.93.13 2.83.38 2.16-1.46 3.1-1.16 3.1-1.16.62 1.56.24 2.71.12 2.99.72.79 1.16 1.8 1.16 3.03 0 4.34-2.64 5.29-5.15 5.57.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.78.54A11.3 11.3 0 0 0 12 .7Z"
+							/></svg
+						><span>GitHub</span></a
+					>
+				</div>
+			</div>
+		</section>
+		<script>
+			/* Konrad Sroka · 2026 · https://github.com/konradbuilds · GPL-3.0-only.
+			 * Explicit user facts, bounded history and explicit style settings. No model training.
+			 */
+			(function () {
+				"use strict";
+				const key = "feral-frank-memory-v1";
+				const fields = ["name", "job", "country", "language", "friends"];
+				const fresh = function () {
+					return {
+						version: 1,
+						enabled: true,
+						quiet: false,
+						profile: {},
+						notes: [],
+						episodes: [],
+					};
+				};
+				let data = fresh();
+				let persistent = true;
+				const cap = function (value) {
+					return Math.max(0, Math.min(100, value));
+				};
+				const clean = function (value, limit) {
+					return typeof value === "string" ? value.trim().slice(0, limit) : "";
+				};
+				try {
+					const raw = JSON.parse(window.FrankStorage.read(key) || "null");
+					if (raw && raw.version === 1) {
+						data.enabled = raw.enabled !== false;
+						data.quiet = raw.quiet === true;
+						fields.forEach(function (field) {
+							data.profile[field] = clean(
+								raw.profile && raw.profile[field],
+								field === "friends" ? 300 : 120,
+							);
+						});
+						data.notes = Array.isArray(raw.notes)
+							? raw.notes
+									.filter(function (v) {
+										return typeof v === "string";
+									})
+									.map(function (v) {
+										return clean(v, 240);
+									})
+									.slice(-10)
+							: [];
+						data.episodes = Array.isArray(raw.episodes)
+							? raw.episodes
+									.filter(function (v) {
+										return typeof v === "string";
+									})
+									.map(function (v) {
+										return clean(v, 160);
+									})
+									.slice(-6)
+							: [];
+					}
+				} catch (error) {
+					persistent = false;
+				}
+				function save() {
+					try {
+						window.FrankStorage.write(key, JSON.stringify(data));
+						persistent = true;
+					} catch (error) {
+						persistent = false;
+					}
+				}
+				function today() {
+					const d = new Date();
+					return (
+						d.getFullYear() +
+						"-" +
+						String(d.getMonth() + 1).padStart(2, "0") +
+						"-" +
+						String(d.getDate()).padStart(2, "0")
+					);
+				}
+				function rememberSnippet(text) {
+					if (!data.enabled) return;
+					data.episodes.push(today() + ": " + clean(text, 140));
+					data.episodes = data.episodes.slice(-6);
+					save();
+				}
+				function messageFacts(text) {
+					const patterns = {
+						name: /\b(?:my name is|call me)\s+([^.!?\n]{1,80})/i,
+						job: /\bI work as\s+(?:an?\s+)?([^.!?\n]{1,120})/i,
+						country: /\b(?:I live in|my country is)\s+([^.!?\n]{1,100})/i,
+						language: /\b(?:my language is|I speak)\s+([^.!?\n]{1,80})/i,
+						friends: /\bmy friend(?:'s name)? is\s+([^.!?\n]{1,80})/i,
+					};
+					const values = {};
+					fields.forEach(function (field) {
+						const match = text.match(patterns[field]);
+						if (match) {
+							const value = match[1]
+								.split(/\s+(?:and I|but I|and my)\s+/i)[0]
+								.trim();
+							if (value && !/^(?:not|nobody|no one)\b/i.test(value)) {
+								values[field] = value;
+							}
+						}
+					});
+					return values;
+				}
+				function extract(text) {
+					if (!data.enabled) {
+						return null;
+					}
+					const changed = [];
+					const values = messageFacts(text);
+					fields.forEach(function (field) {
+						const value = values[field];
+						if (!value) {
+							return;
+						}
+						if (field === "friends") {
+							const friends = (data.profile.friends || "")
+								.split(",")
+								.map(function (v) {
+									return v.trim();
+								})
+								.filter(Boolean);
+							if (friends.indexOf(value) === -1) {
+								friends.push(value);
+							}
+							data.profile.friends = friends.slice(-8).join(", ").slice(0, 300);
+						} else {
+							data.profile[field] = value;
+						}
+						changed.push(field);
+					});
+					const note = text.match(/\bremember that\s+([\s\S]{1,240})/i);
+					if (note) {
+						if (data.notes.indexOf(note[1]) === -1) {
+							data.notes.push(note[1]);
+							data.notes = data.notes.slice(-10);
+						}
+						changed.push("note");
+					}
+					if (changed.length) {
+						save();
+						return persistent
+							? "Got it. I’ll remember that on this device."
+							: "Got it. I can remember that for this tab only.";
+					}
+					return null;
+				}
+				// Delete only matching current facts, notes and snippets. Later corrections survive.
+				function forgetMessage(text) {
+					const values = messageFacts(text);
+					const patch = { profile: [], notes: [], episodes: [] };
+					fields.forEach(function (field) {
+						if (!values[field]) {
+							return;
+						}
+						const previous = data.profile[field] || "";
+						let next = previous;
+						if (field === "friends") {
+							const names = values[field].split(",").map(function (v) {
+								return clean(v, 120).toLowerCase();
+							});
+							next = previous
+								.split(",")
+								.map(function (v) {
+									return v.trim();
+								})
+								.filter(function (v) {
+									return names.indexOf(v.toLowerCase()) === -1;
+								})
+								.join(", ");
+						} else if (
+							clean(previous, 120).toLowerCase() ===
+							clean(values[field], 120).toLowerCase()
+						) {
+							next = "";
+						}
+						if (previous !== next) {
+							patch.profile.push({
+								field: field,
+								previous: previous,
+								next: next,
+							});
+							if (next) {
+								data.profile[field] = next;
+							} else {
+								delete data.profile[field];
+							}
+						}
+					});
+					const note = text.match(/\bremember that\s+([\s\S]{1,240})/i);
+					data.notes = data.notes.filter(function (value, index) {
+						if (note && clean(value, 240) === clean(note[1], 240)) {
+							patch.notes.push({ value: value, index: index });
+							return false;
+						}
+						return true;
+					});
+					data.episodes = data.episodes.filter(function (value, index) {
+						if (
+							clean(value.replace(/^\d{4}-\d{2}-\d{2}: /, ""), 140) ===
+							clean(text, 140)
+						) {
+							patch.episodes.push({
+								value: value,
+								index: index,
+							});
+							return false;
+						}
+						return true;
+					});
+					save();
+					return patch;
+				}
+				function restoreMessage(patch) {
+					patch.profile.forEach(function (item) {
+						if ((data.profile[item.field] || "") === item.next) {
+							data.profile[item.field] = item.previous;
+						}
+					});
+					["notes", "episodes"].forEach(function (key) {
+						patch[key].forEach(function (item) {
+							if (data[key].indexOf(item.value) === -1) {
+								data[key].splice(
+									Math.min(item.index, data[key].length),
+									0,
+									item.value,
+								);
+							}
+						});
+						data[key] = data[key].slice(key === "notes" ? -10 : -6);
+					});
+					save();
+				}
+
+				function recall() {
+					const lines = fields
+						.filter(function (field) {
+							return !!data.profile[field];
+						})
+						.map(function (field) {
+							return field + ": " + data.profile[field];
+						});
+					return (
+						lines.concat(data.notes).join("\n") ||
+						"Nothing personal yet. Tell me what you want me to remember."
+					);
+				}
+				function relevant(text) {
+					if (!data.enabled) {
+						return {};
+					}
+					const t = text.toLowerCase();
+					const profile = {};
+					["name", "language"].forEach(function (field) {
+						if (data.profile[field]) {
+							profile[field] = data.profile[field];
+						}
+					});
+					["job", "country", "friends"].forEach(function (field) {
+						const value = data.profile[field];
+						const terms =
+							field === "job"
+								? /work|job|code|career|office/
+								: field === "country"
+									? /country|live|travel|home|where/
+									: /friend|company|who/;
+						if (
+							value &&
+							(terms.test(t) ||
+								value
+									.toLowerCase()
+									.split(/[, ]+/)
+									.some(function (word) {
+										return word.length > 2 && t.indexOf(word) !== -1;
+									}))
+						) {
+							profile[field] = value;
+						}
+					});
+					const words = t.split(/\W+/).filter(function (word) {
+						return word.length > 3;
+					});
+					const notes = data.notes
+						.filter(function (note) {
+							return words.some(function (word) {
+								return note.toLowerCase().indexOf(word) !== -1;
+							});
+						})
+						.slice(-3);
+					return {
+						userStatedFacts: profile,
+						userStatedNotes: notes,
+						recentUserSnippets: data.episodes.slice(-3),
+					};
+				}
+				function update(values, enabled) {
+					fields.forEach(function (field) {
+						data.profile[field] = clean(
+							values[field],
+							field === "friends" ? 300 : 120,
+						);
+					});
+					data.notes = clean(values.notes, 2400)
+						.split("\n")
+						.map(function (v) {
+							return clean(v, 240);
+						})
+						.filter(Boolean)
+						.slice(-10);
+					data.enabled = enabled;
+					if (!enabled) {
+						data.episodes = [];
+					}
+					save();
+				}
+				function forget() {
+					data.profile = {};
+					data.notes = [];
+					data.episodes = [];
+					save();
+				}
+				window.FrankMemory = {
+					data: data,
+					rememberSnippet: rememberSnippet,
+					extract: extract,
+					forgetMessage: forgetMessage,
+					restoreMessage: restoreMessage,
+					recall: recall,
+					relevant: relevant,
+					update: update,
+					forget: forget,
+					save: save,
+					persistent: function () {
+						return persistent;
+					},
+				};
+			})();
+
+			/* Konrad Sroka · 2026 · https://github.com/konradbuilds · GPL-3.0-only.
+			 * One lightweight SVG acting loop. Original artwork is reused, never traced.
+			 */
+			(function () {
+				"use strict";
+				const ids = [
+					"whole-breath",
+					"body-weight",
+					"head-turn",
+					"left-pupil",
+					"right-pupil",
+					"left-lid",
+					"right-lid",
+					"left-lower-lid",
+					"right-lower-lid",
+					"left-crease",
+					"right-crease",
+					"mouth-talk",
+				];
+				const parts = {};
+				ids.forEach(function (id) {
+					parts[id] = document.getElementById(id);
+				});
+				const preference = window.matchMedia(
+					"(prefers-reduced-motion: reduce)",
+				);
+				let frame = 0;
+				let origin = performance.now();
+				let speakingUntil = 0;
+				let thinkingNow = false;
+				let lastPaint = 0;
+				let interval = 30;
+				let expression = "relaxed";
+				const faces = {
+					relaxed: [0.04, 0.06],
+					tired: [0.35, 0.28],
+					wondering: [0.05, 0.19],
+					surprised: [0, 0],
+					understanding: [0.14, 0.15],
+					relieved: [0.23, 0.22],
+					amused: [0.12, 0.16],
+					amazed: [0, 0.02],
+					wary: [0.07, 0.32],
+					confused: [0.04, 0.27],
+					dreamy: [0.33, 0.3],
+					unbothered: [0.24, 0.26],
+					pleased: [0.12, 0.15],
+				};
+				let shownFace = [0, 0];
+				let shownGaze = [0, 0];
+				let gazePaint = performance.now();
+				let pointerBounds = null;
+				let pointerBouts = 0;
+				const pointerGaze = {
+					x: 0,
+					y: 0,
+					at: -Infinity,
+					follow: false,
+				};
+
+				// Keep the original pupils, centred within their own eye shapes.
+				// Pointer events only update a target; the existing acting loop paints it.
+				function releaseGaze() {
+					pointerGaze.at = performance.now() - 1000;
+					pointerGaze.follow = false;
+					pointerBounds = null;
+				}
+				document.addEventListener(
+					"pointermove",
+					function (event) {
+						if (
+							event.pointerType !== "mouse" ||
+							preference.matches ||
+							document.hidden
+						) {
+							return;
+						}
+						const now = performance.now();
+						if (now - pointerGaze.at >= 1000) {
+							// Notice two movement bouts out of three, rather than stare at every cursor move.
+							pointerGaze.follow = pointerBouts++ % 3 !== 2;
+							pointerBounds = null;
+						}
+						if (!pointerBounds) {
+							pointerBounds = document
+								.getElementById("reactor")
+								.getBoundingClientRect();
+						}
+						const x =
+							(event.clientX -
+								pointerBounds.left -
+								pointerBounds.width * 0.53) /
+							Math.max(160, innerWidth * 0.35);
+						const y =
+							(event.clientY -
+								pointerBounds.top -
+								pointerBounds.height * 0.26) /
+							Math.max(160, innerHeight * 0.35);
+						pointerGaze.x = Math.max(-1, Math.min(1, x)) * 24;
+						pointerGaze.y = Math.max(-1, Math.min(1, y)) * 12;
+						pointerGaze.at = now;
+					},
+					{ passive: true },
+				);
+				document.addEventListener("pointerout", function (event) {
+					if (event.pointerType === "mouse" && !event.relatedTarget) {
+						releaseGaze();
+					}
+				});
+				window.addEventListener("blur", releaseGaze);
+				window.addEventListener("resize", function () {
+					pointerBounds = null;
+				});
+				window.addEventListener(
+					"scroll",
+					function () {
+						pointerBounds = null;
+					},
+					{ passive: true },
+				);
+
+				function smooth(value) {
+					return value * value * (3 - 2 * value);
+				}
+				function track(time, keys) {
+					for (let i = 1; i < keys.length; i += 1) {
+						if (time <= keys[i][0]) {
+							const f = Math.max(
+								0,
+								(time - keys[i - 1][0]) / (keys[i][0] - keys[i - 1][0]),
+							);
+							return keys[i - 1][1] + (keys[i][1] - keys[i - 1][1]) * smooth(f);
+						}
+					}
+					return keys[keys.length - 1][1];
+				}
+				function attr(id, key, value) {
+					// Avoid invalidating SVG paint for attributes that have not changed.
+					if (parts[id].getAttribute(key) !== String(value))
+						parts[id].setAttribute(key, value);
+				}
+				function draw(elapsed, talking, immediate) {
+					const t = elapsed % 9600;
+					const face = faces[expression] || faces.relaxed;
+					shownFace = shownFace.map(function (value, i) {
+						return immediate ? face[i] : value + (face[i] - value) * 0.14;
+					});
+					const blinkL = track(t, [
+						[0, 0],
+						[710, 0],
+						[810, 1],
+						[850, 1],
+						[1010, 0],
+						[6500, 0],
+						[6600, 1],
+						[6640, 1],
+						[6820, 0],
+						[9600, 0],
+					]);
+					const blinkR = track(t, [
+						[0, 0],
+						[740, 0],
+						[840, 1],
+						[880, 1],
+						[1060, 0],
+						[6530, 0],
+						[6630, 1],
+						[6680, 1],
+						[6890, 0],
+						[9600, 0],
+					]);
+					const sleepy = track(t, [
+						[0, 0],
+						[3400, 0],
+						[4230, 0.55],
+						[4610, 0.55],
+						[4690, 1],
+						[4750, 0],
+						[9600, 0],
+					]);
+					const l = Math.min(1, Math.max(blinkL, sleepy, shownFace[0]));
+					const r = Math.min(1, Math.max(blinkR, sleepy * 0.86, shownFace[1]));
+					const glance = track(t, [
+						[0, 0],
+						[1700, 0],
+						[1870, 23],
+						[2320, 23],
+						[2510, 0],
+						[5100, 0],
+						[5290, -21],
+						[5650, -21],
+						[5850, 0],
+						[7850, 0],
+						[8030, 7],
+						[8290, 7],
+						[8480, 0],
+						[9600, 0],
+					]);
+					const glanceY = track(t, [
+						[0, 0],
+						[5100, 0],
+						[5290, -10],
+						[5650, -10],
+						[5850, 0],
+						[7850, 0],
+						[8030, 12],
+						[8290, 12],
+						[8480, 0],
+						[9600, 0],
+					]);
+					const now = performance.now();
+					const pointerAge = now - pointerGaze.at;
+					let gaze = preference.matches ? [0, 0] : [glance, glanceY];
+					if (!preference.matches && pointerAge < 4000) {
+						gaze =
+							pointerAge < 1000 && pointerGaze.follow
+								? [pointerGaze.x, pointerGaze.y]
+								: [0, 0];
+					}
+					if (!preference.matches && thinkingNow)
+						gaze = thinkingNow ? [8, -7] : [0, 0];
+					const gazeEase =
+						1 - Math.exp(-Math.min(64, Math.max(0, now - gazePaint)) / 65);
+					shownGaze = shownGaze.map(function (value, index) {
+						return immediate
+							? gaze[index]
+							: value + (gaze[index] - value) * gazeEase;
+					});
+					gazePaint = now;
+					const head =
+						(thinkingNow ? 0.7 : 0) +
+						track(t, [
+							[0, 0],
+							[1510, 0],
+							[2020, 1.1],
+							[2320, 0.75],
+							[2920, 0.75],
+							[3480, -0.2],
+							[3810, 0],
+							[4340, 0.6],
+							[4670, 0.8],
+							[4770, -1.3],
+							[4900, 0.35],
+							[5450, 0],
+							[9600, 0],
+						]);
+					const dip = track(t, [
+						[0, 0],
+						[3400, 0],
+						[4350, 6],
+						[4670, 6],
+						[4770, -3],
+						[4920, 1.2],
+						[5500, 0],
+						[9600, 0],
+					]);
+					const weight = track(t, [
+						[0, 0],
+						[1700, 0],
+						[2310, 0.2],
+						[3010, 0.12],
+						[3810, 0],
+						[4550, 0.12],
+						[4750, 0.12],
+						[4890, -0.23],
+						[5150, 0.08],
+						[5820, 0],
+						[9600, 0],
+					]);
+					attr(
+						"whole-breath",
+						"transform",
+						"translate(0 " + (Math.sin(elapsed / 1150) * 1.2).toFixed(2) + ")",
+					);
+					attr(
+						"body-weight",
+						"transform",
+						"rotate(" + weight.toFixed(3) + " 640 1180)",
+					);
+					attr(
+						"head-turn",
+						"transform",
+						"translate(0 " +
+							dip.toFixed(2) +
+							") rotate(" +
+							head.toFixed(3) +
+							" 650 630)",
+					);
+					attr(
+						"left-pupil",
+						"transform",
+						"translate(" +
+							(28 + shownGaze[0]).toFixed(2) +
+							" " +
+							(-2 + shownGaze[1]).toFixed(2) +
+							")",
+					);
+					attr(
+						"right-pupil",
+						"transform",
+						"translate(" +
+							(34 + shownGaze[0] * 0.82).toFixed(2) +
+							" " +
+							(12 + shownGaze[1] * 0.7).toFixed(2) +
+							")",
+					);
+					// Both lids meet on a horizontal seam. No rotated blink axis.
+					const topL = 190 + l * 88;
+					const bottomL = 350 - l * 72;
+					const topR = 325 + r * 60;
+					const bottomR = 435 - r * 50;
+					attr(
+						"left-lid",
+						"d",
+						"M480 185H655V" +
+							topL +
+							"Q565 " +
+							(topL + 4) +
+							" 480 " +
+							topL +
+							"Z",
+					);
+					attr(
+						"left-lower-lid",
+						"d",
+						"M480 355H655V" +
+							bottomL +
+							"Q565 " +
+							(bottomL - 3) +
+							" 480 " +
+							bottomL +
+							"Z",
+					);
+					attr(
+						"right-lid",
+						"d",
+						"M675 310H803V" +
+							topR +
+							"Q738 " +
+							(topR + 3) +
+							" 675 " +
+							topR +
+							"Z",
+					);
+					attr(
+						"right-lower-lid",
+						"d",
+						"M675 440H803V" +
+							bottomR +
+							"Q738 " +
+							(bottomR - 2) +
+							" 675 " +
+							bottomR +
+							"Z",
+					);
+					attr(
+						"left-crease",
+						"opacity",
+						Math.max(0, (l - 0.87) / 0.13).toFixed(2),
+					);
+					attr(
+						"right-crease",
+						"opacity",
+						Math.max(0, (r - 0.87) / 0.13).toFixed(2),
+					);
+					// Tiny elastic jaw pulses: the supplied teeth/tongue remain original.
+					const syllable = talking
+						? Math.max(
+								0,
+								Math.sin(elapsed / 78) * 0.65 + Math.sin(elapsed / 131) * 0.35,
+							)
+						: 0;
+
+					const mouthScale = 1 + syllable * 0.14;
+					attr(
+						"mouth-talk",
+						"transform",
+						"translate(0 425) scale(1 " +
+							mouthScale.toFixed(4) +
+							") translate(0 -425)",
+					);
+				}
+				function stop() {
+					cancelAnimationFrame(frame);
+					frame = 0;
+				}
+				function tick(now) {
+					if (document.hidden || preference.matches) {
+						stop();
+						return;
+					}
+					if (now - lastPaint >= interval) {
+						const began = performance.now();
+						draw(now - origin, now < speakingUntil, false);
+						// One frame redraws fourteen masked copies of the
+						// artwork. Where that cannot run at 33fps the loop
+						// slows itself down instead of locking up the tab.
+						const cost = performance.now() - began;
+						if (cost > 18) {
+							interval = Math.min(140, interval + 20);
+						} else if (cost < 7 && interval > 30) {
+							interval = Math.max(30, interval - 5);
+						}
+						lastPaint = now;
+					}
+					frame = requestAnimationFrame(tick);
+				}
+				function start() {
+					stop();
+					if (!document.hidden && !preference.matches) {
+						frame = requestAnimationFrame(tick);
+					}
+				}
+				function reset() {
+					stop();
+					origin = performance.now();
+					shownFace = [0, 0];
+					shownGaze = [0, 0];
+					pointerGaze.at = -Infinity;
+					draw(0, false, true);
+					start();
+				}
+				window.FrankMotion = {
+					thinking: function (active) {
+						thinkingNow = active;
+						start();
+					},
+					talk: function (text) {
+						speakingUntil =
+							performance.now() +
+							Math.min(5200, Math.max(900, text.length * 35));
+						start();
+					},
+					mood: function (value) {
+						expression = value;
+						if (preference.matches) {
+							draw(0, false, true);
+						}
+					},
+					sample: function (time, talking) {
+						stop();
+						draw(time, talking, true);
+					},
+					replay: reset,
+					start: start,
+					stop: stop,
+				};
+				document.addEventListener("visibilitychange", function () {
+					if (document.hidden) {
+						releaseGaze();
+						stop();
+					} else {
+						origin = performance.now();
+						start();
+					}
+				});
+				if (preference.addEventListener) {
+					preference.addEventListener("change", reset);
+				} else {
+					preference.addListener(reset);
+				}
+				reset();
+			})();
+
+			/*
+			 * Feral Frank — a tiny browser companion for a lighter moment.
+			 * Author: Konrad Sroka · https://github.com/konradbuilds
+			 * Copyright (C) 2026 Konrad Sroka. GPL-3.0-only. See LICENSE.txt.
+			 * Original artwork is preserved in masked SVG layers with separate eyes and mouth.
+			 * Chat requires a verified provider connection. Animation and notes stay local.
+			 */
+			(function () {
+				"use strict";
+				const I18N = {
+					name: "Feral Frank",
+					stageLabel: "Frank and mood",
+					placeholder: "Start chatting…",
+					send: "Send message",
+					feed: "Give Frank a bottle",
+					replay: "Give Frank a nudge",
+					labels: ["energy", "thankful", "ease of mind"],
+					log: "Conversation with Feral Frank",
+					composer: "Message Feral Frank",
+					intro: "Hi, I’m Frank. Pull up a crate. Want a quick look around?",
+					thinking: "Hold on. Rattling the brain tin…",
+					joint: "Give Frank a joint",
+					moods: {
+						relaxed: "getting by",
+						unbothered: "unbothered",
+						pleased: "feeling alright",
+						dreamy: "miles away",
+						tired: "knackered",
+						wary: "not sure, mate",
+						weird: "a bit sideways",
+					},
+				};
+				const STORAGE = "feral-frank-v1";
+				const DAY = 86400000;
+				const $ = function (id) {
+					return document.getElementById(id);
+				};
+				const clamp = function (n) {
+					return Math.max(0, Math.min(100, n));
+				};
+				const pick = function (items) {
+					return items[Math.floor(Math.random() * items.length)];
+				};
+				const reduceMotion = window.matchMedia(
+					"(prefers-reduced-motion: reduce)",
+				);
+				const S = load();
+				let replyTarget = null;
+				let selectedMessage = null;
+				let deletedMessage = null;
+				let busy = false;
+				let currentEmotion = "relaxed";
+				const memory = window.FrankMemory;
+				let effectTimer = 0;
+
+				function knownSource(value) {
+					// Retain safe source links in existing history; no fact library is loaded.
+					try {
+						const url = new URL(value);
+						return url.protocol === "https:" ? url.href : "";
+					} catch (error) {
+						return "";
+					}
+				}
+
+				function chooseEmotion() {
+					return pick([
+						"relaxed",
+						"tired",
+						"wondering",
+						"pleased",
+						"unbothered",
+						"amused",
+						"understanding",
+						"relieved",
+						"confused",
+						"dreamy",
+						"amazed",
+						"surprised",
+						"wary",
+					]);
+				}
+				function reactToMessage(text) {
+					const value = text.toLowerCase();
+					currentEmotion = /\b(sad|lonely|rough|stress|anxious|death)\b/.test(
+						value,
+					)
+						? "understanding"
+						: /\b(wow|amazing|surprise)\b/.test(value)
+							? "surprised"
+							: /\b(why|how|wonder|confus)\b/.test(value)
+								? "wondering"
+								: /\b(tired|sleep)\b/.test(value)
+									? "tired"
+									: /\b(joke|funny|haha)\b/.test(value)
+										? "amused"
+										: "relaxed";
+					window.FrankMotion.mood(currentEmotion);
+					$("app").classList.toggle("is-still", currentEmotion === "tired");
+					$("app").classList.toggle(
+						"is-grooving",
+						currentEmotion === "relaxed" || currentEmotion === "amused",
+					);
+				}
+				function setupMemory() {
+					const panel = $("memory-panel");
+					const fields = ["name", "job", "country", "language", "friends"];
+					let previousFocus = null;
+					let forgetArmed = false;
+					let clearArmed = false;
+					function close() {
+						panel.hidden = true;
+						$("memory-open").setAttribute("aria-expanded", "false");
+						document.body.classList.remove("memory-visible");
+						$("app").removeAttribute("inert");
+						if (previousFocus) {
+							previousFocus.focus();
+						}
+					}
+					function open() {
+						previousFocus = document.activeElement;
+						$("remember-enabled").checked = memory.data.enabled;
+						fields.forEach(function (field) {
+							$("memory-" + field).value = memory.data.profile[field] || "";
+						});
+						$("memory-notes").value = memory.data.notes.join("\n");
+						$("memory-storage").textContent = memory.persistent()
+							? "Saved on this device. AI receives relevant memories when enabled."
+							: "Storage unavailable. Memory lasts for this tab only.";
+						forgetArmed = false;
+						clearArmed = false;
+						$("chat-clear").textContent = "Clear chat — keep memory";
+						closeMessageActions(false);
+						$("chat-notice").hidden = true;
+						$("memory-forget").textContent = "Forget memory & chat";
+						$("memory-feedback").textContent = "";
+						panel.hidden = false;
+						$("memory-open").setAttribute("aria-expanded", "true");
+						document.body.classList.add("memory-visible");
+						$("app").setAttribute("inert", "");
+						$("memory-heading").focus();
+						panel.querySelector(".memory-card").scrollTop = 0;
+					}
+					$("memory-open").addEventListener("click", open);
+					$("memory-close").addEventListener("click", close);
+					panel.addEventListener("click", function (event) {
+						if (event.target === panel) {
+							close();
+						}
+					});
+					document.addEventListener("keydown", function (event) {
+						if (panel.hidden) return;
+						if (event.key === "Escape") {
+							event.preventDefault();
+							close();
+						}
+						if (event.key === "Tab") {
+							const controls = panel.querySelectorAll(
+								"button, input, textarea, select, a[href], summary",
+							);
+							const visible = Array.from(controls).filter(function (node) {
+								return !node.disabled && node.getClientRects().length;
+							});
+							const first = visible[0];
+							const last = visible[visible.length - 1];
+							if (
+								event.shiftKey &&
+								(document.activeElement === first ||
+									document.activeElement === $("memory-heading") ||
+									!panel.contains(document.activeElement))
+							) {
+								event.preventDefault();
+								last.focus();
+							} else if (
+								!event.shiftKey &&
+								(document.activeElement === last ||
+									!panel.contains(document.activeElement))
+							) {
+								event.preventDefault();
+								first.focus();
+							}
+						}
+					});
+					document.addEventListener("focusin", function (event) {
+						if (!panel.hidden && !panel.contains(event.target)) {
+							$("memory-heading").focus();
+							panel.querySelector(".memory-card").scrollTop = 0;
+						}
+					});
+					$("memory-form").addEventListener("submit", function (event) {
+						event.preventDefault();
+						const values = {};
+						fields.forEach(function (field) {
+							values[field] = $("memory-" + field).value;
+						});
+						values.notes = $("memory-notes").value;
+						memory.update(values, $("remember-enabled").checked);
+						$("memory-feedback").textContent = memory.persistent()
+							? "Memory saved."
+							: "Kept for this tab only.";
+					});
+					$("chat-clear").addEventListener("click", function () {
+						if (busy) {
+							$("memory-feedback").textContent =
+								"Wait for the current reply, then clear chat.";
+							return;
+						}
+						if (!clearArmed) {
+							clearArmed = true;
+							this.textContent = "Click again to clear chat";
+							$("memory-feedback").textContent =
+								"Deletes all chat on this device. Memory and your unsent draft stay.";
+							return;
+						}
+						S.log = [];
+						S.introHidden = true;
+						deletedMessage = null;
+						setReply(null);
+						closeMessageActions(false);
+						$("chat-notice").hidden = true;
+						renderChat();
+						save();
+						this.textContent = "Clear chat — keep memory";
+						clearArmed = false;
+						$("memory-feedback").textContent = "Chat cleared. Memory kept.";
+					});
+					$("memory-forget").addEventListener("click", function () {
+						if (busy) {
+							$("memory-feedback").textContent =
+								"Wait for the current reply before forgetting.";
+							return;
+						}
+						if (!forgetArmed) {
+							forgetArmed = true;
+							this.textContent = "Click again to forget";
+							$("memory-feedback").textContent =
+								"Clears personal memory and chat. Growth stays.";
+							return;
+						}
+						memory.forget();
+						setReply(null);
+						deletedMessage = null;
+						closeMessageActions(false);
+						S.introHidden = false;
+						S.log = [];
+						save();
+						$("log").textContent = "";
+						show("assistant", I18N.intro, true);
+						fields.forEach(function (field) {
+							$("memory-" + field).value = "";
+						});
+						$("memory-notes").value = "";
+						$("memory-feedback").textContent =
+							"Personal memory and chat cleared.";
+						this.textContent = "Forget memory & chat";
+						forgetArmed = false;
+					});
+					$("memory-export").addEventListener("click", function () {
+						const blob = new Blob(
+							[
+								JSON.stringify(
+									{
+										version: 1,
+										exported: new Date().toISOString(),
+										memory: memory.data,
+										history: S.log,
+									},
+									null,
+									2,
+								),
+							],
+							{ type: "application/json" },
+						);
+						const url = URL.createObjectURL(blob);
+						const link = document.createElement("a");
+						link.href = url;
+						link.download = "frank-memory-and-history.json";
+						document.body.appendChild(link);
+						link.click();
+						link.remove();
+						setTimeout(function () {
+							URL.revokeObjectURL(url);
+						}, 1000);
+						$("memory-feedback").textContent = "Export downloaded.";
+					});
+				}
+				function setupAiStatus() {
+					let pinned = false;
+					const button = $("ai-status");
+					const tip = $("ai-tooltip");
+					button.addEventListener("click", function () {
+						pinned = !pinned;
+						tip.hidden = !pinned;
+						renderAiStatus();
+					});
+					button.addEventListener("mouseenter", function () {
+						renderAiStatus();
+						tip.hidden = false;
+					});
+					button.addEventListener("mouseleave", function () {
+						if (!pinned) {
+							tip.hidden = true;
+						}
+					});
+					button.addEventListener("focus", function () {
+						renderAiStatus();
+						tip.hidden = false;
+					});
+					button.addEventListener("blur", function () {
+						pinned = false;
+						tip.hidden = true;
+					});
+					button.addEventListener("keydown", function (event) {
+						if (event.key === "Escape") {
+							pinned = false;
+							tip.hidden = true;
+						}
+					});
+				}
+
+				// IDs and reply references survive reloads. Quotes resolve against live history,
+				// so deleting an original never leaves a hidden copy of its text in a reply.
+				function messageId() {
+					return (
+						"m-" +
+						Date.now().toString(36) +
+						"-" +
+						Math.random().toString(36).slice(2, 11)
+					);
+				}
+				function validMessageId(value) {
+					return (
+						typeof value === "string" && /^[a-zA-Z0-9_-]{1,64}$/.test(value)
+					);
+				}
+				function findMessage(id) {
+					if (!id) {
+						return null;
+					}
+					if (id === "intro" && !S.introHidden) {
+						return {
+							id: "intro",
+							role: "assistant",
+							content: I18N.intro,
+						};
+					}
+					return (
+						S.log.find(function (entry) {
+							return entry.id === id;
+						}) || null
+					);
+				}
+				function messageName(entry) {
+					return entry.role === "user" ? "You" : "Frank";
+				}
+				function updateReplyLink(button) {
+					const original = findMessage(button.getAttribute("data-reply-to"));
+					const label = original
+						? messageName(original)
+						: "Original message unavailable";
+					const excerpt = original
+						? original.content.slice(0, 180)
+						: "Deleted or outside the saved chat history.";
+					// Avoid rebuilding unchanged quotes inside the live region on every reply.
+					if (
+						button.firstElementChild &&
+						button.firstElementChild.textContent === label &&
+						button.lastElementChild.textContent === excerpt
+					) {
+						return;
+					}
+					button.textContent = "";
+					button.disabled = !original;
+					button.title = original
+						? "Jump to the original message"
+						: "Original message no longer available";
+					const name = document.createElement("strong");
+					name.textContent = label;
+					const text = document.createElement("span");
+					text.textContent = excerpt;
+					button.appendChild(name);
+					button.appendChild(text);
+				}
+				function refreshReplyLinks() {
+					$("log").querySelectorAll(".reply-link").forEach(updateReplyLink);
+					if (replyTarget && !findMessage(replyTarget)) {
+						setReply(null);
+					}
+				}
+				function renderChat() {
+					$("log").textContent = "";
+					if (!S.introHidden) {
+						show("assistant", I18N.intro, true);
+					}
+					S.log.forEach(function (entry) {
+						show(entry.role, entry.content, false, entry.source, entry);
+					});
+				}
+				window.FrankChatStorage = {
+					count: () => S.log.length,
+					preview: function (id) {
+						return window.FrankStorage.planChat(S, id);
+					},
+					apply: function (id) {
+						if (busy) throw new Error("Wait for the current reply to finish.");
+						const plan = window.FrankStorage.planChat(S, id);
+						window.FrankStorage.commitProfile(plan);
+						S.log = plan.state.log;
+						deletedMessage = null;
+						closeMessageActions(false);
+						$("chat-notice").hidden = true;
+						renderChat();
+						refreshReplyLinks();
+						memory.save();
+						document.dispatchEvent(new CustomEvent("frank:storage-policy"));
+						return plan;
+					},
+				};
+
+				function setReply(id) {
+					const entry = findMessage(id);
+					replyTarget = entry ? id : null;
+					$("reply-draft").hidden = !entry;
+					document
+						.querySelector(".footer")
+						.classList.toggle("has-reply", !!entry);
+					$("reply-name").textContent = entry
+						? "Replying to " + messageName(entry)
+						: "";
+					$("reply-text").textContent = entry
+						? entry.content.slice(0, 180)
+						: "";
+					if (entry) {
+						speak("Replying to " + messageName(entry));
+					}
+				}
+				function closeMessageActions(restoreFocus) {
+					const node = selectedMessage ? $("message-" + selectedMessage) : null;
+					$("message-actions").hidden = true;
+					if (node) {
+						const button = node.querySelector(".message-delete");
+						button.setAttribute("aria-expanded", "false");
+						if (restoreFocus) {
+							button.focus({ preventScroll: true });
+						}
+					}
+					selectedMessage = null;
+				}
+				function openMessageActions(node) {
+					const id = node.getAttribute("data-message-id");
+					if (selectedMessage === id && !$("message-actions").hidden) {
+						closeMessageActions(true);
+						return;
+					}
+					closeMessageActions(false);
+					selectedMessage = id;
+					$("chat-notice").hidden = true;
+					$("message-actions").hidden = false;
+					$("message-actions").querySelector(
+						"[data-action=delete-memory]",
+					).disabled = busy || findMessage(id).role !== "user";
+					$("delete-hint").textContent =
+						findMessage(id).role === "user"
+							? busy
+								? "Wait for the reply to finish before removing memory."
+								: "Remove matching saved facts and snippets too. Personality stays."
+							: "Frank’s replies add no personal memory. Use Chat only.";
+					const entry = findMessage(id);
+					$("message-actions").setAttribute(
+						"aria-label",
+						"Delete message from " +
+							messageName(entry) +
+							": " +
+							entry.content.slice(0, 80),
+					);
+					node
+						.querySelector(".message-delete")
+						.setAttribute("aria-expanded", "true");
+					$("message-actions")
+						.querySelector("button")
+						.focus({ preventScroll: true });
+				}
+				function deleteMessage(id, forgetMemory) {
+					const entry = findMessage(id);
+					if (!entry) {
+						return;
+					}
+					if (forgetMemory && busy) {
+						speak("Wait for the current reply before deleting saved memory.");
+						return;
+					}
+					const memoryPatch =
+						forgetMemory && entry.role === "user"
+							? memory.forgetMessage(entry.content)
+							: null;
+					const scroll = $("log").scrollTop;
+					const index = S.log.findIndex(function (item) {
+						return item.id === id;
+					});
+					deletedMessage = {
+						entry: entry,
+						index: index,
+						memoryPatch: memoryPatch,
+					};
+					if (id === "intro") {
+						S.introHidden = true;
+					} else {
+						S.log.splice(index, 1);
+					}
+					if (replyTarget === id) {
+						setReply(null);
+					}
+					closeMessageActions(false);
+					renderChat();
+					$("log").scrollTop = scroll;
+					const saved = save();
+					$("chat-notice-text").textContent = forgetMemory
+						? memoryPatch &&
+							memoryPatch.profile.length +
+								memoryPatch.notes.length +
+								memoryPatch.episodes.length
+							? "Message and matching memory deleted."
+							: "Message deleted. No matching saved memory."
+						: "Message deleted. Memory kept.";
+					if (!saved || (forgetMemory && !memory.persistent())) {
+						$("chat-notice-text").textContent +=
+							" Storage blocked; reload may restore it.";
+					}
+					$("chat-notice").hidden = false;
+					$("log").focus({ preventScroll: true });
+					speak("Message deleted. Undo is available.");
+				}
+				function setupChatActions() {
+					const log = $("log");
+					let gesture = null;
+					let suppressClickUntil = 0;
+					let jumpTimer = 0;
+					function resetGesture() {
+						if (gesture) {
+							gesture.node.style.transform = "";
+							gesture.node.classList.remove("is-swiping");
+						}
+						gesture = null;
+					}
+					log.addEventListener("click", function (event) {
+						if (event.target.closest("#message-intro")) return;
+						if (Date.now() < suppressClickUntil) {
+							event.preventDefault();
+							return;
+						}
+						const quote = event.target.closest(".reply-link");
+						if (quote) {
+							const target = $(
+								"message-" + quote.getAttribute("data-reply-to"),
+							);
+							if (target) {
+								closeMessageActions(false);
+								log
+									.querySelectorAll(".is-jump-target")
+									.forEach(function (node) {
+										node.classList.remove("is-jump-target");
+									});
+								clearTimeout(jumpTimer);
+								// Scroll only the log, never the page or composer.
+								const distance =
+									target.getBoundingClientRect().top -
+									log.getBoundingClientRect().top;
+								log.scrollTop +=
+									distance -
+									Math.max(12, (log.clientHeight - target.offsetHeight) / 2);
+								target.focus({ preventScroll: true });
+								target.classList.add("is-jump-target");
+								jumpTimer = setTimeout(function () {
+									target.classList.remove("is-jump-target");
+								}, 1200);
+							}
+							return;
+						}
+						const replyButton = event.target.closest(".message-reply");
+						if (replyButton) {
+							setReply(
+								replyButton.closest(".msg").getAttribute("data-message-id"),
+							);
+							closeMessageActions(false);
+							$("q").focus();
+							return;
+						}
+
+						if (event.target.closest("a, .share-quote")) {
+							return;
+						}
+						if (
+							!event.target.closest(".message-delete") &&
+							window.getSelection &&
+							window.getSelection().toString()
+						) {
+							return;
+						}
+						const node = event.target.closest(".msg");
+						if (node) {
+							openMessageActions(node);
+						}
+					});
+					$("message-actions").addEventListener("click", function (event) {
+						const button = event.target.closest("button");
+						if (!button) {
+							return;
+						}
+						const action = button.getAttribute("data-action");
+						const id = selectedMessage;
+						if (action === "delete" || action === "delete-memory") {
+							deleteMessage(id, action === "delete-memory");
+						} else {
+							closeMessageActions(true);
+						}
+					});
+					$("reply-cancel").addEventListener("click", function () {
+						setReply(null);
+						$("q").focus();
+					});
+					$("chat-notice-close").addEventListener("click", function () {
+						$("chat-notice").hidden = true;
+						deletedMessage = null;
+						log.focus({ preventScroll: true });
+					});
+					$("chat-undo").addEventListener("click", function () {
+						if (!deletedMessage) {
+							return;
+						}
+						const entry = deletedMessage.entry;
+						if (deletedMessage.memoryPatch) {
+							memory.restoreMessage(deletedMessage.memoryPatch);
+						}
+						if (entry.id === "intro") {
+							S.introHidden = false;
+						} else {
+							S.log.splice(
+								Math.min(deletedMessage.index, S.log.length),
+								0,
+								entry,
+							);
+							S.log = S.log.slice(-window.FrankStorage.profile().messages);
+						}
+						deletedMessage = null;
+						$("chat-notice").hidden = true;
+						renderChat();
+						save();
+						const target = $("message-" + entry.id);
+						if (target) {
+							target.focus({ preventScroll: true });
+						}
+						speak("Message restored.");
+					});
+					document.addEventListener("keydown", function (event) {
+						if (event.key === "Escape" && !$("message-actions").hidden) {
+							event.preventDefault();
+							closeMessageActions(true);
+						} else if (
+							event.key === "Escape" &&
+							!$("reply-draft").hidden &&
+							$("f").contains(event.target)
+						) {
+							setReply(null);
+						}
+					});
+					document.addEventListener("click", function (event) {
+						if (
+							!log.contains(event.target) &&
+							!$("message-actions").contains(event.target)
+						) {
+							closeMessageActions(false);
+						}
+					});
+					// Horizontal gestures opt out of panning; vertical scrolling remains native.
+					log.addEventListener("pointerdown", function (event) {
+						if (event.target.closest("#message-intro")) return;
+						if (!event.isPrimary) {
+							resetGesture();
+							return;
+						}
+						if (
+							event.pointerType === "mouse" ||
+							event.button !== 0 ||
+							event.target.closest("a, button")
+						) {
+							return;
+						}
+						const node = event.target.closest(".msg");
+						if (node) {
+							gesture = {
+								node: node,
+								pointer: event.pointerId,
+								x: event.clientX,
+								y: event.clientY,
+								horizontal: false,
+							};
+						}
+					});
+					log.addEventListener("pointermove", function (event) {
+						if (!gesture || event.pointerId !== gesture.pointer) {
+							return;
+						}
+						const dx = event.clientX - gesture.x,
+							dy = event.clientY - gesture.y;
+						if (!gesture.horizontal) {
+							if (Math.abs(dy) > 12 && Math.abs(dy) >= Math.abs(dx)) {
+								resetGesture();
+								return;
+							}
+							if (Math.abs(dx) < 12 || Math.abs(dx) < Math.abs(dy) * 1.5) {
+								return;
+							}
+							gesture.horizontal = true;
+							gesture.node.setPointerCapture(event.pointerId);
+							gesture.node.classList.add("is-swiping");
+							closeMessageActions(false);
+						}
+						if (event.cancelable) {
+							event.preventDefault();
+						}
+						if (!reduceMotion.matches) {
+							gesture.node.style.transform =
+								"translateX(" + Math.max(-72, Math.min(72, dx)) + "px)";
+						}
+					});
+					log.addEventListener("pointerup", function (event) {
+						if (!gesture || event.pointerId !== gesture.pointer) {
+							return;
+						}
+						const node = gesture.node,
+							dx = event.clientX - gesture.x;
+						const horizontal = gesture.horizontal;
+						resetGesture();
+						if (!horizontal) {
+							return;
+						}
+						suppressClickUntil = Date.now() + 500;
+						if (Math.abs(dx) < 64) {
+							return;
+						}
+						const id = node.getAttribute("data-message-id");
+						if (dx < 0) {
+							openMessageActions(node);
+						} else {
+							setReply(id);
+							$("q").focus();
+						}
+					});
+					log.addEventListener("pointercancel", resetGesture);
+					log.addEventListener("lostpointercapture", function (event) {
+						// Moving capture from the text span to its bubble is not a cancellation.
+						if (gesture && event.target === gesture.node) {
+							resetGesture();
+						}
+					});
+					window.addEventListener("blur", resetGesture);
+				}
+
+				function load() {
+					const data = {
+						fed: 70,
+						att: 70,
+						ease: 75,
+						seen: Date.now(),
+						colour: false,
+						log: [],
+						introHidden: false,
+					};
+					try {
+						const raw = JSON.parse(window.FrankStorage.read(STORAGE) || "{}");
+						if (!raw || typeof raw !== "object") {
+							return data;
+						}
+						["fed", "att", "ease"].forEach(function (key) {
+							if (Number.isFinite(raw[key])) {
+								data[key] = clamp(raw[key]);
+							}
+						});
+						if (Number.isFinite(raw.seen)) {
+							data.seen = Math.min(Date.now(), raw.seen);
+						}
+						data.colour = raw.colour === true;
+						data.introHidden = raw.introHidden === true;
+						if (Array.isArray(raw.log)) {
+							const usedIds = new Set();
+							data.log = raw.log
+								.filter(function (entry) {
+									return (
+										entry &&
+										["user", "assistant"].indexOf(entry.role) !== -1 &&
+										typeof entry.content === "string"
+									);
+								})
+								.slice(-window.FrankStorage.profile().messages)
+								.map(function (entry) {
+									const id =
+										validMessageId(entry.id) &&
+										entry.id !== "intro" &&
+										!usedIds.has(entry.id)
+											? entry.id
+											: messageId();
+									usedIds.add(id);
+									return {
+										id: id,
+										replyTo: validMessageId(entry.replyTo)
+											? entry.replyTo
+											: null,
+										role: entry.role,
+										source: knownSource(entry.source),
+										content: entry.content
+											.replace(/\n\n\[Local mode:[\s\S]*?\]/g, "")
+											.slice(0, entry.role === "assistant" ? 4000 : 2000),
+									};
+								});
+						}
+					} catch (error) {
+						// The app still works when browser storage is unavailable.
+					}
+					return data;
+				}
+
+				function save() {
+					try {
+						const plan = window.FrankStorage.planChat(S);
+						window.FrankStorage.write(STORAGE, plan.text);
+						if (plan.removed) {
+							S.log = plan.state.log;
+							renderChat();
+							refreshReplyLinks();
+						}
+						return true;
+					} catch (error) {
+						// Private browsing may deny storage; keep the current session usable.
+						return false;
+					}
+				}
+
+				function decay() {
+					const days = Math.max(0, Date.now() - S.seen) / DAY;
+					S.fed = clamp(S.fed - days * 55);
+					S.att = clamp(S.att - days * 70);
+					S.ease = clamp(S.ease + days * 8);
+					S.seen = Date.now();
+				}
+
+				function renderAiStatus() {
+					const connected = window.FrankConnection.ready();
+					const label = connected ? "Connected" : "Not connected yet";
+					$("ai-status").classList.toggle("ai-online", connected);
+					$("ai-status").title = label;
+					for (const id of ["ai-status-label", "ai-tooltip"]) {
+						if ($(id).textContent !== label) $(id).textContent = label;
+					}
+					$("q").disabled = !connected;
+					$("send").disabled = !connected || busy;
+				}
+				function openAISettings() {
+					if (window.FrankStart) {
+						window.FrankStart.connect();
+						return;
+					}
+					if ($("memory-panel").hidden) $("memory-open").click();
+					$("ai-settings").open = true;
+					const target = $("ai-provider").disabled
+						? $("ai-settings").querySelector("summary")
+						: $("ai-provider");
+					target.focus();
+				}
+
+				function show(role, text, intro, source, entry) {
+					const node = document.createElement("div");
+					node.className = "msg " + (role === "user" ? "me" : "him");
+					node.dir = "auto";
+					node.id = "message-" + (intro ? "intro" : entry.id);
+					node.setAttribute("data-message-id", intro ? "intro" : entry.id);
+					node.tabIndex = -1;
+					if (entry && entry.replyTo) {
+						const quote = document.createElement("button");
+						quote.type = "button";
+						quote.className = "reply-link";
+						quote.setAttribute("data-reply-to", entry.replyTo);
+						node.appendChild(quote);
+						updateReplyLink(quote);
+					}
+					const words = document.createElement("span");
+					words.textContent = text;
+					node.appendChild(words);
+					if (intro) {
+						const connect = document.createElement("button");
+						connect.type = "button";
+						connect.className = "intro-connect";
+						connect.textContent = "Connect my AI";
+						const demo = document.createElement("button");
+						demo.type = "button";
+						demo.className = "intro-connect demo-launch";
+						demo.textContent = "Try a demo conversation";
+						demo.addEventListener("click", () => window.FrankStart.demo());
+						node.appendChild(demo);
+						connect.addEventListener("click", openAISettings);
+						node.appendChild(connect);
+					}
+					const tail = document.createElementNS(
+						"http://www.w3.org/2000/svg",
+						"svg",
+					);
+					tail.setAttribute("viewBox", "0 0 14 18");
+					tail.setAttribute("aria-hidden", "true");
+					tail.setAttribute("focusable", "false");
+					tail.setAttribute("class", "bubble-tail");
+					const curve = document.createElementNS(
+						"http://www.w3.org/2000/svg",
+						"path",
+					);
+					curve.setAttribute("d", "M14 1C9 3 9 10 1 15C7 17 12 14 14 11Z");
+					tail.appendChild(curve);
+					node.appendChild(tail);
+					if (knownSource(source)) {
+						const link = document.createElement("a");
+						link.href = source;
+						link.target = "_blank";
+						link.rel = "noopener";
+						link.className = "fact-source";
+						link.title = "Read this fact’s source (new tab)";
+						link.textContent = "source ↗";
+						node.appendChild(link);
+					}
+					const actions = document.createElement("div");
+					actions.className = "quote-actions";
+					const share = document.createElement("button");
+					share.type = "button";
+					share.className = "share-quote";
+					share.title = "Share this message, or copy it";
+					share.setAttribute("aria-label", share.title);
+					share.setAttribute("data-quote", text);
+					share.setAttribute("data-source", knownSource(source));
+					share.innerHTML =
+						'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg>';
+					actions.appendChild(share);
+					const reply = document.createElement("button");
+					reply.type = "button";
+					reply.className = "message-reply";
+					reply.title = "Reply to this message";
+					reply.setAttribute("aria-label", reply.title);
+					reply.innerHTML =
+						'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M10 3 1 11l9 8v-5c6 0 9.5 2 13 6-1-8.5-5-12-13-12Z"/></svg>';
+					actions.appendChild(reply);
+					const remove = document.createElement("button");
+					remove.type = "button";
+					remove.className = "message-delete";
+					remove.title = "Choose how to delete this message";
+					remove.setAttribute("aria-label", remove.title);
+					remove.setAttribute("aria-expanded", "false");
+					remove.setAttribute("aria-controls", "message-actions");
+					remove.innerHTML =
+						'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></svg>';
+					actions.appendChild(remove);
+					if (!intro) node.appendChild(actions);
+
+					$("log").appendChild(node);
+					while (
+						$("log").children.length >
+						window.FrankStorage.profile().messages + 1
+					) {
+						// Keep the introduction while trimming old conversation bubbles.
+						$("log").children[S.introHidden ? 0 : 1].remove();
+					}
+					$("log").scrollTop = $("log").scrollHeight;
+				}
+
+				function add(role, text, source, replyTo) {
+					const entry = {
+						id: messageId(),
+						role: role,
+						content: text,
+						source: knownSource(source),
+						replyTo: replyTo || null,
+					};
+					S.log.push(entry);
+					S.log = S.log.slice(-window.FrankStorage.profile().messages);
+					show(role, text, false, source, entry);
+					refreshReplyLinks();
+					if (role === "assistant") {
+						window.FrankMotion.talk(text);
+						document.dispatchEvent(
+							new CustomEvent("frank:reply", {
+								detail: { text: text, idle: !busy },
+							}),
+						);
+					}
+					save();
+				}
+
+				document.addEventListener("frank:connection", renderAiStatus);
+
+				async function ask(text, quoted) {
+					if (!window.FrankConnection.ready()) return;
+					speak(I18N.thinking);
+					try {
+						const data = await window.FrankConnection.chat(
+							text,
+							S.log
+								.slice(0, -1)
+								.slice(-12)
+								.map(function (entry) {
+									return {
+										role: entry.role,
+										content: entry.content.slice(0, 1000),
+									};
+								}),
+							memory.relevant(text),
+							quoted ? quoted.content : undefined,
+						);
+						add("assistant", data.reply);
+					} catch (error) {
+						document.dispatchEvent(new CustomEvent("frank:ai-error"));
+						add(
+							"assistant",
+							"AI reply unavailable: " +
+								error.message +
+								" Your message is still here.",
+						);
+					} finally {
+						renderAiStatus();
+					}
+				}
+
+				function sizeApp() {
+					// Numeric pixels work in older browsers and follow the mobile keyboard.
+					const viewport = window.visualViewport;
+					const height = viewport
+						? Math.round(viewport.height)
+						: window.innerHeight;
+					$("app").style.height = height + "px";
+				}
+
+				function paint() {
+					if (!$("message-actions").hidden && selectedMessage) {
+						const entry = findMessage(selectedMessage);
+						$("message-actions").querySelector(
+							"[data-action=delete-memory]",
+						).disabled = busy || !entry || entry.role !== "user";
+						if (entry && entry.role === "user") {
+							$("delete-hint").textContent = busy
+								? "Wait for the reply to finish before removing memory."
+								: "Remove matching saved facts and snippets too. Personality stays.";
+						}
+					}
+					$("app").classList.toggle("is-coloured", S.colour);
+					["fed", "att", "ease"].forEach(function (key, index) {
+						$(["fFed", "fAtt", "fEase"][index]).style.width = S[key] + "%";
+						$("meter-" + key).setAttribute("aria-valuenow", Math.round(S[key]));
+					});
+					renderAiStatus();
+					save();
+				}
+
+				function speak(text) {
+					$("say").textContent = text;
+				}
+
+				function calm() {
+					currentEmotion = "relaxed";
+					window.FrankMotion.mood(currentEmotion);
+					$("app").classList.remove("is-still");
+					$("app").classList.toggle(
+						"is-grooving",
+						!reduceMotion.matches && Math.random() < 0.65,
+					);
+				}
+
+				function clearEffect() {
+					clearTimeout(effectTimer);
+					$("art").classList.remove(
+						"has-lasers",
+						"nudged",
+						"bottle-act",
+						"joint-act",
+					);
+					["drink", "joint"].forEach(function (id) {
+						$(id).setAttribute("aria-pressed", "false");
+					});
+				}
+
+				function useProp(kind) {
+					clearEffect();
+					calm();
+					if (kind === "joint") {
+						S.att = clamp(S.att + 12);
+					}
+					if (kind === "drink") {
+						S.ease = clamp(S.ease + 12);
+					}
+					if (kind === "drink") {
+						S.fed = clamp(S.fed + 6);
+					}
+					$(kind).setAttribute("aria-pressed", "true");
+					if (!reduceMotion.matches) {
+						if (kind === "joint") {
+							$("art").classList.add("has-lasers");
+						} else {
+							$("art").classList.add("nudged");
+						}
+					}
+					paint();
+					effectTimer = setTimeout(
+						function () {
+							clearEffect();
+							calm();
+						},
+						kind === "drink" ? 1500 : 3600,
+					);
+				}
+				$("pet").addEventListener("click", function () {
+					clearEffect();
+					calm();
+					// Thankful refills only through Frank’s fictional joint interaction.
+					S.ease = clamp(S.ease + 2);
+					$("art").classList.add("nudged");
+					effectTimer = setTimeout(clearEffect, 800);
+					paint();
+				});
+				["drink", "joint"].forEach(function (kind) {
+					$(kind).addEventListener("click", function () {
+						this.classList.remove("is-bouncing");
+						if (!reduceMotion.matches) {
+							void this.offsetWidth;
+							this.classList.add("is-bouncing");
+						}
+						useProp(kind);
+						if (!reduceMotion.matches) {
+							$("art").classList.add(
+								kind === "drink" ? "bottle-act" : "joint-act",
+							);
+						}
+					});
+					$(kind).addEventListener("animationend", function () {
+						this.classList.remove("is-bouncing");
+					});
+				});
+				$("f").addEventListener("submit", async function (event) {
+					event.preventDefault();
+					const text = $("q").value.trim().slice(0, 2000);
+					if (!text || busy || !window.FrankConnection.ready()) {
+						return;
+					}
+					busy = true;
+					document.dispatchEvent(new CustomEvent("frank:turn-start"));
+					$("send").disabled = true;
+					$("q").value = "";
+					const replyTo = replyTarget;
+					const quoted = findMessage(replyTo);
+					add("user", text, null, replyTo);
+					setReply(null);
+					closeMessageActions(false);
+					$("chat-notice").hidden = true;
+					memory.rememberSnippet(text);
+					memory.extract(text);
+					reactToMessage(text);
+					// Thankful refills only through Frank’s fictional joint interaction.
+					S.fed = clamp(S.fed - 2);
+					S.ease = clamp(S.ease + 1);
+					paint();
+					try {
+						await ask(text, quoted);
+					} finally {
+						busy = false;
+						document.dispatchEvent(new CustomEvent("frank:turn-end"));
+						renderAiStatus();
+						reactToMessage(text);
+						paint();
+						speak("");
+					}
+				});
+				setInterval(function () {
+					if (
+						document.hidden ||
+						busy ||
+						$("art").classList.contains("has-lasers")
+					) {
+						return;
+					}
+					// Usually cheerful; a short sleepy or uncertain spell is uncommon.
+					currentEmotion = chooseEmotion();
+					window.FrankMotion.mood(currentEmotion);
+					$("app").classList.toggle(
+						"is-grooving",
+						["relaxed", "pleased", "unbothered"].indexOf(currentEmotion) !==
+							-1 && Math.random() < 0.7,
+					);
+					$("app").classList.toggle(
+						"is-still",
+						currentEmotion === "tired" || currentEmotion === "dreamy",
+					);
+				}, 14000);
+				setInterval(function () {
+					if (document.hidden) {
+						return;
+					}
+					S.fed = clamp(S.fed - 0.4);
+					S.att = clamp(S.att - 0.5);
+					S.seen = Date.now();
+					paint();
+				}, 60000);
+				document.addEventListener("visibilitychange", function () {
+					document.body.classList.toggle("paused", document.hidden);
+					if (document.hidden) {
+						clearEffect();
+						S.seen = Date.now();
+						save();
+					} else {
+						decay();
+						calm();
+						paint();
+					}
+				});
+				window.addEventListener("pagehide", function () {
+					S.seen = Date.now();
+					save();
+				});
+				window.addEventListener("resize", sizeApp);
+				if (window.visualViewport) {
+					window.visualViewport.addEventListener("resize", sizeApp);
+				}
+				function preferenceChanged() {
+					clearEffect();
+					paint();
+				}
+				if (reduceMotion.addEventListener) {
+					reduceMotion.addEventListener("change", preferenceChanged);
+				} else {
+					reduceMotion.addListener(preferenceChanged);
+				}
+
+				$("q").placeholder = I18N.placeholder;
+				$("q-label").textContent = I18N.composer;
+				$("pet").setAttribute("aria-label", I18N.replay);
+				$("send").setAttribute("aria-label", I18N.send);
+				$("log").setAttribute("aria-label", I18N.log);
+				["drink", "joint"].forEach(function (kind) {
+					$(kind).setAttribute(
+						"aria-label",
+						kind === "drink" ? I18N.feed : I18N[kind],
+					);
+					$(kind).title = kind === "drink" ? I18N.feed : I18N[kind];
+				});
+				["fed", "att", "ease"].forEach(function (key, index) {
+					$("label-" + key).textContent = I18N.labels[index];
+					$("meter-" + key).setAttribute("aria-label", I18N.labels[index]);
+				});
+				renderChat();
+				setupChatActions();
+				setupMemory();
+				setupAiStatus();
+				sizeApp();
+				decay();
+				calm();
+				paint();
+			})();
+		</script>
+		<script src="mobile.js" defer></script>
+		<script src="workspace.js" defer></script>
+
+		<script src="storage-controls.js" defer></script>
+		<script defer src="ai-setup.js"></script>
+		<script src="onboarding.js" defer></script>
+
+		<script src="public-demo.js" defer></script>
+	</body>
+	<!-- Frank, to whoever reads source: the bin is temporary. Make the code worth keeping. -->
+</html>

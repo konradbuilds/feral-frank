@@ -1,0 +1,37 @@
+{
+  "release": "1.5.0",
+  "engines": {
+    "chromium": "153.0.8010.0",
+    "firefox": "157.0",
+    "webkit": "27.2"
+  },
+  "viewports": [
+    [
+      320,
+      640
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      390,
+      500
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      844,
+      390
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "characterAndDemoChecks": "passed",
+  "realProviderRequests": 0,
+  "limitations": "See REVIEW.md"
+}

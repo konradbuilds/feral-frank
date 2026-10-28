@@ -1,0 +1,42 @@
+/* Midnight Frank — archived original palette. Load after the main styles to restore. */
+:root {
+	color-scheme: dark;
+	--bg: #353343;
+	--panel: #25242c;
+	--line: #4d4b4e;
+	--ink: #d9d5ce;
+	--dim: #aaa6b1;
+	--yellow: #d4bd83;
+	--rose: #353343;
+	--panel-light: #454355;
+	--purple-light: #d0cbd5;
+	--page-bg: var(--bg);
+	--motto-bg: #d0cbd5;
+	--motto-ink: var(--bg);
+	--gear: var(--bg);
+	--bars-bg: #565369;
+	--bubble-him: #94c2a9;
+	--bubble-me: #b5b3c0;
+	--footer-bg: #454355;
+	--send-bg: #91c1a8;
+	--send-ink: #163126;
+	--placeholder: var(--dim);
+	--input-ink: var(--ink);
+	--focus: #8fd6b4;
+	--composer-focus: #8fd6b4;
+	--tooltip-bg: #302d38;
+	--field-bg: #121116;
+	--field-ink: var(--ink);
+	--settings-muted: var(--dim);
+	--settings-accent: #aaa6b1;
+	--settings-surface: var(--panel);
+	--control-ink: var(--ink);
+	--tools-ink: var(--ink);
+	--action-bg: var(--panel);
+	--action-ink: var(--ink);
+	--danger-bg: var(--panel);
+	--danger-ink: #ffb5b5;
+	--creator-bg: #2a2b2f;
+	--creator-ink: #d8d4d0;
+	--settings-link: var(--yellow);
+}

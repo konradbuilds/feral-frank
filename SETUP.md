@@ -130,3 +130,7 @@ Back up your installation first. Replace the app files, including `frank.php`, `
 Delete old `voice.js`, `demo-call.js`, `demo-call.css`, `call.html` and `demo-1.mp3` through `demo-5.mp3` from the web root. They are preserved in the separate archive, not used by this release. Close old app tabs and reopen, or use Update app when offered.
 
 Character controls change writing only. “Try with my AI” uses one request and is not saved to chat or memory. Model quality still needs checking with your chosen provider.
+
+## Optional daily cap
+
+New installs have no app daily cap. In Usage limits, **0 = off**; set 1–500 to enable a daily attempt cap. Existing saved caps are preserved: change yours to 0 and save to remove it. With a cap enabled, its counter appears below the chat bar. Provider quotas and charges still apply.

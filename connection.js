@@ -129,18 +129,16 @@
 	function renderUsage() {
 		if (!$("ai-usage") || !state) return;
 		const u = state.usage;
+		const capped = Number.isInteger(u.dailyLimit) && u.dailyLimit > 0;
 		$("ai-usage").textContent =
-			`${u.attempts} / ${u.dailyLimit} attempts today (UTC) · ${u.inputTokens + u.outputTokens} reported tokens. ${u.attempts >= u.dailyLimit ? "Daily cap reached." : u.attempts >= u.dailyLimit * 0.8 ? "Near your daily cap." : ""}`;
-		const warning = enabled() && u.attempts >= u.dailyLimit * 0.8;
-		$("ai-budget-notice").hidden = !warning;
-		$("ai-budget-notice").textContent =
+			`${u.attempts}${capped ? " / " + u.dailyLimit : ""} attempts today (UTC) · ${u.inputTokens + u.outputTokens} reported tokens. ${capped ? (u.attempts >= u.dailyLimit ? "Daily cap reached." : "") : "App cap off."}`;
+		const showCap = enabled() && capped;
+		$("ai-budget-notice").hidden = !showCap;
+		$("ai-budget-notice").textContent = !showCap ? "" :
 			u.attempts >= u.dailyLimit
 				? "Daily AI attempt cap reached. Adjust it in Settings or wait for tomorrow."
-				: u.attempts +
-					" of " +
-					u.dailyLimit +
-					" daily AI attempts used. Limits are in Settings.";
-		$("f").closest("footer").classList.toggle("has-budget-notice", warning);
+				: `${u.attempts} / ${u.dailyLimit} daily AI attempts used.`;
+		$("f").closest("footer").classList.toggle("has-budget-notice", showCap);
 
 		$("ai-daily-limit").value = u.dailyLimit;
 		$("ai-token-limit").value = u.maxTokens;

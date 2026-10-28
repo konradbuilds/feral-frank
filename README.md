@@ -51,3 +51,7 @@ Publish only clean source. Never commit real passwords, API keys, private config
 Settings → Frank’s character: reply length, humour, roughness and opinion. One Frank, no modes. For bigger decisions he helps you weigh facts and trade-offs; the choice stays yours. AI behaviour varies by model.
 
 [Character design](CHARACTER_ROADMAP.md) · [Parked calls](VOICE-ROADMAP.md)
+
+## v1.5.1 — quieter by default
+
+Short now instructs 3–9 words total, usually one sentence. Dry, low-key company; no unsolicited fixes, pep talks or routine follow-up questions. Only explicit requests for detail or essential immediate safety guidance justify longer replies. New/reset preferences use Low opinion. Existing saved preferences are preserved; select Short or Reset adjustments if needed. The rule is sent to both backends on every request, including old chats. Provider compliance is not mechanically guaranteed; replies are not blindly cut mid-sentence.

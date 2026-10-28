@@ -474,7 +474,7 @@ try {
 	}
 	$config = frank_read($private . "/providers.json", [
 		"providers" => [],
-		"dailyLimit" => 50,
+		"dailyLimit" => 0,
 		"maxTokens" => 512,
 	]);
 	$usage = frank_usage(frank_read($private . "/usage.json", []), $config);
@@ -514,7 +514,7 @@ try {
 		}
 
 		foreach (
-			["dailyLimit" => [1, 500], "maxTokens" => [128, 1024]]
+			["dailyLimit" => [0, 500], "maxTokens" => [128, 1024]]
 			as $field => $range
 		) {
 			if (isset($data[$field])) {
@@ -563,7 +563,7 @@ try {
 	if (!frank_model($config["providers"][$id]["model"] ?? "")) {
 		frank_error(400, "Choose and save a model first.");
 	}
-	if ($usage["attempts"] >= $config["dailyLimit"]) {
+	if ($config["dailyLimit"] > 0 && $usage["attempts"] >= $config["dailyLimit"]) {
 		frank_error(
 			429,
 			"Daily AI attempt cap reached. Adjust it deliberately in Settings or use scripted mode.",

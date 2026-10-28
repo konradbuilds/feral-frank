@@ -781,12 +781,7 @@ Original PNG remains intact. SVG masks separate its actual ink; this is not a ve
 						Saved-data limit reached or storage blocked. Some new changes last
 						only in this tab. Open Saved data in Settings.
 					</div>
-					<div
-						id="ai-budget-notice"
-						class="ai-budget-notice"
-						role="status"
-						hidden
-					></div>
+
 
 					<form class="composer" id="f">
 						<span class="connection"
@@ -837,6 +832,12 @@ Original PNG remains intact. SVG masks separate its actual ink; this is not a ve
 							</svg>
 						</button>
 					</form>
+					<div
+						id="ai-budget-notice"
+						class="ai-budget-notice"
+						role="status"
+						hidden
+					></div>
 				</footer>
 			</section>
 			<aside class="my-stuff" id="my-stuff" aria-labelledby="stuff-title">
@@ -1142,13 +1143,13 @@ Original PNG remains intact. SVG masks separate its actual ink; this is not a ve
 
 						<details class="settings-help">
 							<summary>Usage limits</summary>
-							<label for="ai-daily-limit">Daily attempt cap (UTC)</label
+							<label for="ai-daily-limit">Daily attempt cap (0 = off)</label
 							><input
 								id="ai-daily-limit"
 								type="number"
-								min="1"
+								min="0"
 								max="500"
-								value="50"
+								value="0"
 							/><label for="ai-token-limit">Maximum reply tokens</label
 							><input
 								id="ai-token-limit"

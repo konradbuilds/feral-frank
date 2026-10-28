@@ -1,3 +1,5 @@
+> Latest patch: REVIEW-1.5.2.md. The checks below describe v1.5.0.
+
 # Release review — Feral Frank v1.5.0
 
 24 October 2026. Chat-only release with the existing artwork and layout.

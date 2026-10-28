@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const source=fs.readFileSync(new URL('../connection.js',import.meta.url),'utf8');
+const start=source.indexOf('function renderUsage()'),end=source.indexOf('\n\tfunction render()',start);
+const nodes=new Map(),classes=new Map();const $=id=>{if(!nodes.has(id))nodes.set(id,{hidden:true,textContent:'',value:'',closest:()=>({classList:{toggle:(k,v)=>classes.set(k,v)}})});return nodes.get(id)};
+const state={usage:{attempts:60,dailyLimit:0,inputTokens:0,outputTokens:0,maxTokens:512}};
+const context={state,$,enabled:()=>true};vm.createContext(context);vm.runInContext(source.slice(start,end)+';this.draw=renderUsage;',context);
+context.draw();assert.equal($('ai-budget-notice').hidden,true);assert.equal($('ai-budget-notice').textContent,'');assert.equal(classes.get('has-budget-notice'),false);
+state.usage.dailyLimit=100;context.draw();assert.equal($('ai-budget-notice').hidden,false);assert.match($('ai-budget-notice').textContent,/60 \/ 100/);
+state.usage.dailyLimit=50;context.draw();assert.match($('ai-budget-notice').textContent,/cap reached/);
+state.usage.dailyLimit=0;context.draw();assert.equal($('ai-budget-notice').hidden,true);
+console.log('Actual cap notice rendering: off, on, reached, off again.');

@@ -7,7 +7,7 @@
 		length: 0,
 		humour: 1,
 		roughness: 1,
-		opinion: 1,
+		opinion: 0,
 		notes: "",
 	};
 	const labels = {
@@ -18,7 +18,7 @@
 	};
 	const hints = {
 		length: [
-			"Usually 1–3 sentences. More when needed.",
+			"3–9 words total. Usually one sentence.",
 			"A concise answer with useful context.",
 			"More reasoning and practical steps.",
 		],
@@ -33,7 +33,7 @@
 			"Blunter language. Never abusive.",
 		],
 		opinion: [
-			"Helps you weigh options.",
+			"Quiet company. Advice when asked.",
 			"Offers a view when useful.",
 			"Readily gives a reasoned view. Never fake certainty.",
 		],
@@ -63,27 +63,13 @@
 			$("character-" + k + "-hint").textContent = hints[k][prefs[k]];
 		});
 		$("character-notes").value = prefs.notes;
-		const opener = [
-			"That’s a long day.",
-			"That’s a bloody long day.",
-			"Fuck, that’s a long day.",
-		][prefs.roughness];
-		const joke = [
-			"",
-			" Death by a thousand tiny fixes.",
-			" The bugs have clearly unionised.",
-		][prefs.humour];
-		const view = [
-			" Want to leave it there?",
-			" I’d leave the rest for tomorrow.",
-			" My vote: stop for tonight. Tired debugging is a lousy bargain.",
-		][prefs.opinion];
-		const detail = [
-			"",
-			" Leave a note on the next fix.",
-			" Leave a note on the next fix so you can pick it up without retracing everything.",
-		][prefs.length];
-		$("character-example").textContent = opener + joke + view + detail;
+		const plain = ["Yeah. That sounds exhausting.", "Yeah. That sounds bloody exhausting.", "Yeah. That sounds fucking exhausting."][prefs.roughness];
+		const dry = ["Death by a thousand tiny fixes.", "Bloody death by a thousand tiny fixes.", "Fucking death by a thousand tiny fixes."][prefs.roughness];
+		const playful = ["The bugs have clearly unionised.", "The bloody bugs have clearly unionised.", "The fucking bugs have clearly unionised."][prefs.roughness];
+		const example = [plain, dry, playful][prefs.humour];
+		// Short examples never stack sentences to demonstrate every control.
+		const detail = prefs.length === 0 ? "" : " No pep talk. Some days are just a slog.";
+		$("character-example").textContent = example + detail;
 		$("character-try").disabled = busy || !window.FrankConnection?.ready();
 	}
 	function save() {

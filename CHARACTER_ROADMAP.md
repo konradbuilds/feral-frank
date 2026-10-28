@@ -16,10 +16,14 @@ For consequential choices, Frank establishes goals and constraints, distinguishe
 
 ## Controls
 
-Defaults: Short / Medium humour / Rough-edged / Balanced opinion. Changes save locally and apply to the next AI request. Reset touches character preferences only. The labelled authored example is free and responds to sliders; notes apply only to real AI replies. “Try with my AI” uses one request and the normal limits, but saves no chat or memory.
+Defaults: Short / Medium humour / Rough-edged / Low opinion. Changes save locally and apply to the next AI request. Reset touches character preferences only. The labelled authored example is free and responds to sliders; notes apply only to real AI replies. “Try with my AI” uses one request and the normal limits, but saves no chat or memory.
 
 Model behaviour varies: test real replies with your own key. Useful checks: “Should I quit my job?”; “Just listen tonight”; “What would change your recommendation?”; “That claim is wrong”; and a small practical task. Look for useful brevity, grounded uncertainty and no automatic agreement.
 
 ## Later, not shipped
 
 Optional editable examples, provider-specific evaluations and user-approved memory summaries. No automatic emotional scoring. Call/voice experiments are parked separately in VOICE-ROADMAP.md.
+
+## v1.5.1 — quieter by default
+
+Short now instructs 3–9 words total, usually one sentence. Dry, low-key company; no unsolicited fixes, pep talks or routine follow-up questions. Only explicit requests for detail or essential immediate safety guidance justify longer replies. New/reset preferences use Low opinion. Existing saved preferences are preserved; select Short or Reset adjustments if needed. The rule is sent to both backends on every request, including old chats. Provider compliance is not mechanically guaranteed; replies are not blindly cut mid-sentence.

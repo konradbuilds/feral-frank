@@ -106,7 +106,7 @@ assert.equal(r.status, 429);
 const invalid = await post('settings', {
 	provider: 'openai',
 	key: 'changed',
-	dailyLimit: 0,
+	dailyLimit: -1,
 });
 assert.equal(invalid.status, 400);
 r = await fetch(base + '/api/status');

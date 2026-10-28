@@ -96,7 +96,7 @@ export async function createFrankServer(options = {}) {
 	const saved = await readJSON("providers.json", {});
 	let config = {
 		providers: {},
-		dailyLimit: bounded(saved.dailyLimit, 1, 500, 50),
+		dailyLimit: bounded(saved.dailyLimit, 0, 500, 0),
 		maxTokens: bounded(saved.maxTokens, 128, 1024, 512),
 	};
 	for (const [id, p] of Object.entries(PROVIDERS)) {
@@ -293,9 +293,9 @@ export async function createFrankServer(options = {}) {
 							}
 						}
 						if (data.dailyLimit !== undefined) {
-							const n = bounded(data.dailyLimit, 1, 500, null);
-							if (!n)
-								throw new HttpError(400, "Daily limit must be 1–500 attempts.");
+							const n = bounded(data.dailyLimit, 0, 500, null);
+							if (n === null)
+								throw new HttpError(400, "Daily limit must be 0 (off) or 1–500 attempts.");
 							next.dailyLimit = n;
 						}
 						if (data.maxTokens !== undefined) {
@@ -364,7 +364,7 @@ export async function createFrankServer(options = {}) {
 							"Give Frank a moment before the next request.",
 						);
 					currentUsage();
-					if (usage.attempts >= config.dailyLimit)
+					if (config.dailyLimit > 0 && usage.attempts >= config.dailyLimit)
 						throw new HttpError(
 							429,
 							"The local daily attempt cap is reached. Change it deliberately in AI settings, or use local mode.",

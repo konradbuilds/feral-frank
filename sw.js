@@ -4,7 +4,7 @@
 'use strict';
 const SCOPE = new URL(self.registration.scope);
 const PREFIX = 'frank-shell:' + SCOPE.pathname + ':';
-const CACHE = PREFIX + 'chat-1.5.6';
+const CACHE = PREFIX + 'chat-1.5.7';
 const ASSETS = [
 	'public-demo.js',
 	'storage.js',

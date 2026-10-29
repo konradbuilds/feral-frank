@@ -63,6 +63,10 @@
     "bytes": 913,
     "sha256": "3f5c81dbfdb4ba2e63b93ebba4d1e59cd76a06abd975803606b3ed622e3c1a1c"
   },
+  "REVIEW-1.5.7.md": {
+    "bytes": 643,
+    "sha256": "85731cf0d4dd58449473027609c9f9aff4ed4929d6b4862ef7c4ba5545593399"
+  },
   "REVIEW.md": {
     "bytes": 3274,
     "sha256": "8ee275bfafa47dcced3c4779485b046a7ee2c5eb4602d557dd02043a9b3adc65"
@@ -84,8 +88,8 @@
     "sha256": "b4d574220f4cc489c5a1b0006ce693957eef03e161b50c54834752a8601b182f"
   },
   "ai-setup.js": {
-    "bytes": 2649,
-    "sha256": "80865e050971655c0d1155159abd8bc1beca65043da8d5675277c12e4cb5f8a8"
+    "bytes": 2644,
+    "sha256": "46cbd0d967ea23bc9d71b5f22317216468154e64122210bef6ae79412261e392"
   },
   "app.html": {
     "bytes": 109452,
@@ -112,8 +116,8 @@
     "sha256": "7970b93af91386477e6268a44fd5459c7998df81e4c5c147b32c737505216720"
   },
   "connection.js": {
-    "bytes": 13257,
-    "sha256": "8b0bc9e772c7bdab2c82ef2f70bbfa4393667a456c0cd56a0df73be822be484f"
+    "bytes": 13726,
+    "sha256": "6fd2e4420bfc1b2b36c5e3d4002d1adedc5a43bb3faf787688f57e3c92718fc7"
   },
   "docs/.nojekyll": {
     "bytes": 0,
@@ -132,8 +136,8 @@
     "sha256": "b4d574220f4cc489c5a1b0006ce693957eef03e161b50c54834752a8601b182f"
   },
   "docs/ai-setup.js": {
-    "bytes": 2649,
-    "sha256": "80865e050971655c0d1155159abd8bc1beca65043da8d5675277c12e4cb5f8a8"
+    "bytes": 2644,
+    "sha256": "46cbd0d967ea23bc9d71b5f22317216468154e64122210bef6ae79412261e392"
   },
   "docs/app.html": {
     "bytes": 109452,
@@ -144,8 +148,8 @@
     "sha256": "563fa0ff2eaa01bb4a1e755f033715a7f962caf6bcafe10e1ed8266ae2a4792b"
   },
   "docs/connection.js": {
-    "bytes": 13257,
-    "sha256": "8b0bc9e772c7bdab2c82ef2f70bbfa4393667a456c0cd56a0df73be822be484f"
+    "bytes": 13726,
+    "sha256": "6fd2e4420bfc1b2b36c5e3d4002d1adedc5a43bb3faf787688f57e3c92718fc7"
   },
   "docs/favicon.png": {
     "bytes": 513,
@@ -217,7 +221,7 @@
   },
   "docs/sw.js": {
     "bytes": 3365,
-    "sha256": "ea9b26ff6c887d2db233b913a067069a28d9c447c2eb987c632316bfc89249a7"
+    "sha256": "e1662a6bc2cc4832563b33e74e4ce56d2568178fce858d519a50450d953c0a1a"
   },
   "docs/workspace.css": {
     "bytes": 40225,
@@ -321,7 +325,7 @@
   },
   "sw.js": {
     "bytes": 3365,
-    "sha256": "ea9b26ff6c887d2db233b913a067069a28d9c447c2eb987c632316bfc89249a7"
+    "sha256": "e1662a6bc2cc4832563b33e74e4ce56d2568178fce858d519a50450d953c0a1a"
   },
   "tests/bridge.test.mjs": {
     "bytes": 5295,

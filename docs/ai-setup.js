@@ -46,7 +46,7 @@
 	$("connect-save").addEventListener("click", async () => {
 		const button = $("connect-save");
 		button.disabled = true;
-		feedback("Saving your key…", "info");
+		feedback("Connecting…", "info");
 		try {
 			await window.FrankConnection.configureFree(
 				$("connect-key").value,
@@ -54,7 +54,7 @@
 			);
 			$("connect-key").value = "";
 			// Saving is its own step: nothing closes, no microphone starts.
-			feedback("Key saved. Frank is connected and ready to chat.", "good");
+			feedback("Frank is connected. Your key is saved privately.", "good");
 		} catch (error) {
 			feedback(error.message, "bad");
 		} finally {

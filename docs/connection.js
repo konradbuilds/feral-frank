@@ -251,7 +251,7 @@
 			try {
 				state = await api("settings", {
 					provider: selected,
-					key: forgetKey ? "" : $("ai-key").value,
+					key: forgetKey || /^[*•●]+$/u.test($("ai-key").value.trim()) ? "" : $("ai-key").value,
 					forgetKey: !!forgetKey,
 					model: $("ai-model").value.trim(),
 					dailyLimit: Number($("ai-daily-limit").value),
@@ -282,14 +282,23 @@
 		window.FrankConnection.configureFree = async (key, provider) => {
 			if (!bridge || !state)
 				throw new Error("Open your hosted frank.php and sign in first.");
-			if (!key.trim()) throw new Error("Paste your API key first.");
-			if (requesting) throw new Error("Wait for the current reply.");
+			if (requesting || saving) throw new Error("Wait for the current reply.");
 			const id = provider || "groq";
 			if (!state.providers.some((p) => p.id === id))
 				throw new Error("That provider is not available on this server.");
-			$("ai-provider").value = id;
-			$("ai-provider").dispatchEvent(new Event("change"));
-			$("ai-key").value = key;
+			const savedProvider = state.providers.find((p) => p.id === id);
+			const suppliedKey = key.trim();
+			const masked = /^[*•●]+$/u.test(suppliedKey);
+			if ((!suppliedKey || masked) && !savedProvider.configured)
+				throw new Error("Paste your API key first.");
+			// Select directly: dispatching change also launched a competing verification.
+			disconnect();
+			selected = id;
+			try {
+				window.FrankStorage.write(storageKey, JSON.stringify({ provider: id }));
+			} catch (error) { /* Keep selection for this tab. */ }
+			render();
+			$("ai-key").value = masked ? "" : suppliedKey;
 			try {
 				// Save the key first so the model list can be requested with it.
 				await settings(false, true);

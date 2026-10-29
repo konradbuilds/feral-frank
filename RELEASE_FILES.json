@@ -47,6 +47,22 @@
     "bytes": 1305,
     "sha256": "484a5a55cdc5e94c7eb6fcb14d4b1d7054565483c0744e80f0002238936a11c0"
   },
+  "REVIEW-1.5.3.md": {
+    "bytes": 1457,
+    "sha256": "126bedf60f17a5bef5b99afbae84565c5f43773db2f79b3686c65c8d03c25b73"
+  },
+  "REVIEW-1.5.4.md": {
+    "bytes": 727,
+    "sha256": "2d7c82f485904f6bfb8bf61e62d7c2f4e57323a3564846588015ab10096ab14f"
+  },
+  "REVIEW-1.5.5.md": {
+    "bytes": 834,
+    "sha256": "002fe6b926d25b1959369bbb0a17e6e059ddd8b6b50d6321e9b5073bfafe3d78"
+  },
+  "REVIEW-1.5.6.md": {
+    "bytes": 913,
+    "sha256": "3f5c81dbfdb4ba2e63b93ebba4d1e59cd76a06abd975803606b3ed622e3c1a1c"
+  },
   "REVIEW.md": {
     "bytes": 3274,
     "sha256": "8ee275bfafa47dcced3c4779485b046a7ee2c5eb4602d557dd02043a9b3adc65"
@@ -72,32 +88,32 @@
     "sha256": "80865e050971655c0d1155159abd8bc1beca65043da8d5675277c12e4cb5f8a8"
   },
   "app.html": {
-    "bytes": 108313,
-    "sha256": "4675640abcb83755c3ea3bd2d778643f6e5d83ed47df9a305579967cfb62adcb"
+    "bytes": 109452,
+    "sha256": "332464186d39f51277f944baf6d71b5d41d2bdc0564165cd239734a971748b74"
   },
   "bridge/character.mjs": {
-    "bytes": 946,
-    "sha256": "b91511458af3244ad17daa9878bffd3c08d73d95db6172211c3c3a1b3a491ffb"
+    "bytes": 1346,
+    "sha256": "aafcea56670dbc1ae2672e45b3a614731d1a145d3224be6b5a90425f6f32606e"
   },
   "bridge/server.mjs": {
     "bytes": 17534,
     "sha256": "2f615c003593fd79f263aefe988eae786465055db0a8449faffdf3ccf444f6c8"
   },
   "character-spec.json": {
-    "bytes": 5704,
-    "sha256": "5080e23f17711ef13b5166330708fab2d1db48ba9d3752c4a36aece00b9fde55"
+    "bytes": 6317,
+    "sha256": "638d2f9ef1dc8557fcd93bc75f57c8e4ab9d0799a59685ed11bea89127762a37"
   },
   "character.js": {
-    "bytes": 4405,
-    "sha256": "e6c26549c83cfb1460c3e36d94e0f89cb6b8c8cb96c134f62019231115eb3526"
+    "bytes": 4425,
+    "sha256": "563fa0ff2eaa01bb4a1e755f033715a7f962caf6bcafe10e1ed8266ae2a4792b"
   },
   "character.php": {
-    "bytes": 982,
-    "sha256": "c7dee659f554973f8e52ee076d422902fce8161baf97374c5cc855baa9fb897d"
+    "bytes": 1520,
+    "sha256": "7970b93af91386477e6268a44fd5459c7998df81e4c5c147b32c737505216720"
   },
   "connection.js": {
-    "bytes": 12451,
-    "sha256": "c480c874eee3256a84ede10fbc631104d59302626f8fd7d7d5ab303609be2cc1"
+    "bytes": 13257,
+    "sha256": "8b0bc9e772c7bdab2c82ef2f70bbfa4393667a456c0cd56a0df73be822be484f"
   },
   "docs/.nojekyll": {
     "bytes": 0,
@@ -120,16 +136,16 @@
     "sha256": "80865e050971655c0d1155159abd8bc1beca65043da8d5675277c12e4cb5f8a8"
   },
   "docs/app.html": {
-    "bytes": 108313,
-    "sha256": "4675640abcb83755c3ea3bd2d778643f6e5d83ed47df9a305579967cfb62adcb"
+    "bytes": 109452,
+    "sha256": "332464186d39f51277f944baf6d71b5d41d2bdc0564165cd239734a971748b74"
   },
   "docs/character.js": {
-    "bytes": 4405,
-    "sha256": "e6c26549c83cfb1460c3e36d94e0f89cb6b8c8cb96c134f62019231115eb3526"
+    "bytes": 4425,
+    "sha256": "563fa0ff2eaa01bb4a1e755f033715a7f962caf6bcafe10e1ed8266ae2a4792b"
   },
   "docs/connection.js": {
-    "bytes": 12451,
-    "sha256": "c480c874eee3256a84ede10fbc631104d59302626f8fd7d7d5ab303609be2cc1"
+    "bytes": 13257,
+    "sha256": "8b0bc9e772c7bdab2c82ef2f70bbfa4393667a456c0cd56a0df73be822be484f"
   },
   "docs/favicon.png": {
     "bytes": 513,
@@ -184,8 +200,8 @@
     "sha256": "6870d0628da4c3072ba548d12f3c729b0a663a700d249980f7cf2017d3d8dba2"
   },
   "docs/onboarding.js": {
-    "bytes": 6633,
-    "sha256": "68b211948c037b8f9edffe4cf9472c663dcbd1be17117e8bfd2941b3e2cd876e"
+    "bytes": 6443,
+    "sha256": "8687cfe749a44f1ea1d3a36b0e9ef54f038fced9b609c9ef7347e797235f41e5"
   },
   "docs/public-demo.js": {
     "bytes": 2251,
@@ -201,11 +217,11 @@
   },
   "docs/sw.js": {
     "bytes": 3365,
-    "sha256": "54b5d854922faa4b9499f2cb6bbb46808bc91fbe84f24f5bd85204b8774b7493"
+    "sha256": "ea9b26ff6c887d2db233b913a067069a28d9c447c2eb987c632316bfc89249a7"
   },
   "docs/workspace.css": {
-    "bytes": 40077,
-    "sha256": "06ba8eb364821a9c1c8c4bfcc330b14b11f40c396fb61fc584d41c9f891200d5"
+    "bytes": 40225,
+    "sha256": "be39291d6565c7ecee38826c0e1057cb72012d9f34296db0ba8404afb6d183c7"
   },
   "docs/workspace.js": {
     "bytes": 4905,
@@ -276,8 +292,8 @@
     "sha256": "6870d0628da4c3072ba548d12f3c729b0a663a700d249980f7cf2017d3d8dba2"
   },
   "onboarding.js": {
-    "bytes": 6633,
-    "sha256": "68b211948c037b8f9edffe4cf9472c663dcbd1be17117e8bfd2941b3e2cd876e"
+    "bytes": 6443,
+    "sha256": "8687cfe749a44f1ea1d3a36b0e9ef54f038fced9b609c9ef7347e797235f41e5"
   },
   "php-config/config.php": {
     "bytes": 361,
@@ -305,7 +321,7 @@
   },
   "sw.js": {
     "bytes": 3365,
-    "sha256": "54b5d854922faa4b9499f2cb6bbb46808bc91fbe84f24f5bd85204b8774b7493"
+    "sha256": "ea9b26ff6c887d2db233b913a067069a28d9c447c2eb987c632316bfc89249a7"
   },
   "tests/bridge.test.mjs": {
     "bytes": 5295,
@@ -316,8 +332,8 @@
     "sha256": "057c9ae55b6ae2467c19290e543b4020ec7977ddc14d4e32e02596401e890458"
   },
   "tests/cap.test.mjs": {
-    "bytes": 1896,
-    "sha256": "0c651f611fd2db2f13287c410999df1ac823fb5f3f5233e1785b0786e142618b"
+    "bytes": 2296,
+    "sha256": "a5913eec1b7b47f310edd9dc99f415004ace60a34fb040b0a1b314d628df379b"
   },
   "tests/character-check.php": {
     "bytes": 938,
@@ -327,6 +343,10 @@
     "bytes": 1019,
     "sha256": "43e18e4b2d0f167a923c93446d3717f770acc98f004fb5f1c047da0a043265bc"
   },
+  "tests/energy.test.mjs": {
+    "bytes": 1484,
+    "sha256": "5d5170bb14aed185a60a6f94d07e8392f5760387523bf24ba66acfc65b5dae50"
+  },
   "tests/hosted-check.php": {
     "bytes": 2879,
     "sha256": "37728c309315bf5d75655f16853a58d48abebfeea297e29bb8bea8ed7d21f00b"
@@ -334,6 +354,10 @@
   "tests/provider-errors.php": {
     "bytes": 467,
     "sha256": "ef5dfad05693a6b8707a53d17ef3a42d9613ea8bbec8bc14610406c8c6d377d2"
+  },
+  "tests/settings-save.test.mjs": {
+    "bytes": 1335,
+    "sha256": "cc0ed3fee74b9dec487b40309f900325f311b9ada17f40dfff1cfc28eb69aadd"
   },
   "tests/short-style.test.mjs": {
     "bytes": 1606,
@@ -356,8 +380,8 @@
     "sha256": "0406f69edb546b97e22856f7b351fda2d7b282a9fd2b3e8042c3a6907b465953"
   },
   "workspace.css": {
-    "bytes": 40077,
-    "sha256": "06ba8eb364821a9c1c8c4bfcc330b14b11f40c396fb61fc584d41c9f891200d5"
+    "bytes": 40225,
+    "sha256": "be39291d6565c7ecee38826c0e1057cb72012d9f34296db0ba8404afb6d183c7"
   },
   "workspace.js": {
     "bytes": 4905,

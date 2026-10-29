@@ -8,6 +8,12 @@ function frank_character_prompt($value): string {
   $n = $prefs[$key] ?? null;
   $rules[] = $spec['rules'][$key][is_int($n) && $n >= 0 && $n <= 2 ? $n : $fallback];
  }
+ $energy = $prefs['energy'] ?? 50;
+ if ((!is_int($energy) && !is_float($energy)) || !is_finite((float) $energy) || $energy < 0 || $energy > 100) $energy = 50;
+ $rules[] = $spec['energyRules'][$energy < 30 ? 0 : ($energy > 70 ? 2 : 1)];
+ $thankfulness = $prefs['thankfulness'] ?? 50;
+ if ((!is_int($thankfulness) && !is_float($thankfulness)) || !is_finite((float) $thankfulness) || $thankfulness < 0 || $thankfulness > 100) $thankfulness = 50;
+ $rules[] = $spec['thankfulnessRules'][$thankfulness < 30 ? 0 : ($thankfulness > 70 ? 2 : 1)];
  return $spec['base'] . "\n" . implode("\n", $rules);
 }
 function frank_character_context($value, $memory): string {

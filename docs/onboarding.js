@@ -188,11 +188,7 @@
 			}
 		}
 	});
-	// Feedback for the toy interactions stays local and independent of AI.
-	const feedback = text('p', '', 'prop-feedback');
-	feedback.hidden = true;
-	feedback.setAttribute('role', 'status');
-	log.before(feedback);
+	// Feeding is local, but its action and reply belong to the real chat history.
 	const lines = {
 		drink: [
 			'Alright, cheers!',
@@ -208,16 +204,13 @@
 		],
 	};
 	const cursors = { drink: 0, joint: 0 };
-	let feedbackTimer;
 	for (const kind of ['drink', 'joint'])
 		$(kind).addEventListener('click', () => {
-			clearTimeout(feedbackTimer);
-			feedback.textContent =
-				lines[kind][cursors[kind]++ % lines[kind].length];
-			feedback.hidden = false;
-			feedbackTimer = setTimeout(() => {
-				feedback.hidden = true;
-			}, 3400);
+			close(false);
+			const reply = lines[kind][cursors[kind]++ % lines[kind].length];
+			document.dispatchEvent(new CustomEvent('frank:feeding', {
+				detail: { kind, reply },
+			}));
 		});
 	const preview = button('Try a demo conversation', () => demo());
 	preview.classList.add('demo-launch');

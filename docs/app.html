@@ -663,6 +663,7 @@ Original PNG remains intact. SVG masks separate its actual ink; this is not a ve
 			<section class="chat-workspace" aria-label="Chat and work">
 				<section class="conversation" aria-label="Conversation">
 					<div class="chat-heading">
+						<button type="button" id="chat-delete-top" class="toolbar-button" title="Keep memory - only deletes chat">Delete chat</button>
 						<button
 							id="memory-open"
 							class="settings-toggle toolbar-button"
@@ -1159,6 +1160,8 @@ Original PNG remains intact. SVG masks separate its actual ink; this is not a ve
 								value="512"
 							/>
 							<p id="ai-usage" role="status"></p>
+							<button type="button" id="ai-save-limits">Save settings</button>
+							<p id="ai-limits-status" role="status"></p>
 						</details>
 						<details class="settings-help">
 							<summary>Key storage &amp; privacy</summary>
@@ -2431,6 +2434,16 @@ Original PNG remains intact. SVG masks separate its actual ink; this is not a ve
 							? "Memory saved."
 							: "Kept for this tab only.";
 					});
+					$("chat-delete-top").addEventListener("click", function () {
+						if (busy) {
+							$("say").textContent = "Wait for the current reply, then delete chat.";
+							return;
+						}
+						if (!window.confirm("Delete all chat? Your memory and unsent draft will stay.")) return;
+						clearArmed = true;
+						$("chat-clear").click();
+						$("say").textContent = "Chat deleted. Memory kept.";
+					});
 					$("chat-clear").addEventListener("click", function () {
 						if (busy) {
 							$("memory-feedback").textContent =
@@ -2628,6 +2641,7 @@ Original PNG remains intact. SVG masks separate its actual ink; this is not a ve
 						show(entry.role, entry.content, false, entry.source, entry);
 					});
 				}
+				window.FrankState = { energy: () => S.fed, thankfulness: () => S.att };
 				window.FrankChatStorage = {
 					count: () => S.log.length,
 					preview: function (id) {
@@ -3221,6 +3235,14 @@ Original PNG remains intact. SVG masks separate its actual ink; this is not a ve
 					}
 					save();
 				}
+
+				document.addEventListener("frank:feeding", function (event) {
+					const { kind, reply } = event.detail || {};
+					if (!["drink", "joint"].includes(kind) || typeof reply !== "string") return;
+					// Explicit action context lets the model understand its local reaction.
+					add("user", kind === "drink" ? "[Gave Frank a drink.]" : "[Gave Frank a joint.]");
+					add("assistant", reply);
+				});
 
 				document.addEventListener("frank:connection", renderAiStatus);
 

@@ -191,7 +191,7 @@
 				history,
 				memory,
 				quote,
-				character: window.FrankCharacter.get(),
+				character: { ...window.FrankCharacter.get(), energy: window.FrankState?.energy(), thankfulness: window.FrankState?.thankfulness() },
 			});
 		} catch (error) {
 			disconnect();
@@ -317,6 +317,28 @@
 				$("ai-key").value = "";
 			}
 		};
+		$("ai-save-limits").addEventListener("click", async () => {
+			const button = $("ai-save-limits");
+			if (requesting || saving) return;
+			saving = true;
+			button.disabled = true;
+			try {
+				// Deliberately omit key/model: limits never replace credentials or call AI.
+				state = await api("settings", {
+					provider: selected,
+					dailyLimit: Number($("ai-daily-limit").value),
+					maxTokens: Number($("ai-token-limit").value),
+				});
+				renderUsage();
+				$("ai-limits-status").textContent = "Settings saved. Your API key is unchanged.";
+			} catch (error) {
+				$("ai-limits-status").textContent = error.message;
+			} finally {
+				saving = false;
+				button.disabled = false;
+				emit();
+			}
+		});
 		$("ai-save").addEventListener("click", async () => {
 			const button = $("ai-save");
 			button.disabled = true;

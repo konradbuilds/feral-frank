@@ -1855,6 +1855,14 @@ h1 {
 	flex: none;
 	padding: 8px 14px;
 }
+.chat-heading #chat-delete-top {
+	border: 0;
+	background: transparent;
+	color: var(--rose);
+	font-size: 12px;
+	min-height: 32px;
+	padding: 4px 0;
+}
 .chat-heading #memory-open {
 	position: static;
 	display: inline-flex;

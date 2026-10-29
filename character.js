@@ -18,7 +18,7 @@
 	};
 	const hints = {
 		length: [
-			"3–9 words total. Usually one sentence.",
+			"Banter: 3–9 words. Requests: the shortest complete answer.",
 			"A concise answer with useful context.",
 			"More reasoning and practical steps.",
 		],

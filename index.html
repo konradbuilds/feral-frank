@@ -360,9 +360,6 @@
 					gap: 0 70px;
 					padding: 90px 48px;
 				}
-				.start-section .eyebrow {
-					grid-column: 1 / -1;
-				}
 				.start-copy p:first-child {
 					margin-top: 0;
 				}
@@ -436,10 +433,10 @@
 				}
 			}
 			.section-intro { display: flex; flex-direction: column; align-items: flex-start; }
-			.setup-frank { display: block; width: min(100%, 280px); height: auto; margin-top: 28px; }
+			.setup-frank { display: block; width: min(100%, 280px); height: auto; margin-top: 28px; margin-left: -24px; }
 			.start-frank { display: block; width: min(100%, 340px); height: auto; margin: 24px 0 32px; }
 			@media (min-width: 760px) {
-				.setup-frank { margin-top: auto; padding-top: 24px; width: min(100%, 320px); }
+				.setup-frank { margin-top: auto; padding-top: 24px; width: min(100%, 320px); margin-left: calc(-1 * max(48px, (100vw - 1224px) / 2)); }
 				.start-frank { margin-bottom: 0; }
 			}
 		</style>
@@ -674,17 +671,14 @@
 				</div>
 			</section>
 			<section class="start-section" aria-labelledby="start-title">
-				<p class="eyebrow">The day’s done. Pull up a crate.</p>
-				<div class="start-heading"><h2 id="start-title">No need to<br />wind down<br /><em>alone.</em></h2>
+				<div class="start-heading"><h2 id="start-title">The day’s done.<br /><em>Pull up a crate.</em></h2>
 <img class="start-frank" src="images/frank-crate-whatever.png" width="800" height="800" alt="A satisfied Frank on a blue milk crate, bottle in hand and WHATEVER stitched on his beanie" loading="lazy" decoding="async"/></div>
 				<div class="start-copy">
-					<p>
-						Meet the character first. Try a scripted chat, feed Frank or adjust his character. No key needed for the demo.
-					</p>
-					<p>
-						For a real conversation, connect your own AI. Your installed Frank
-						keeps notes and editable memory in your browser. Adjust his writing style in Settings.
-					</p>
+					<h2>No need to wind down <em>alone.</em></h2>
+					<p>Relax - Frank is here.</p>
+					<p>Come hang out with Frank, and wind down after a long annoying day.</p>
+					<p>Feed Frank drinks and joints to up his energy and thankfulness levels.</p>
+					<p>You'll need to install it first and connect your own AI. Once installed, Frank keeps notes and editable memory in your browser. You can also adjust his character and writing style in Settings and more.</p>
 					<a
 						class="primary-cta"
 						data-launch
@@ -696,7 +690,7 @@
 						><span aria-hidden="true">↗</span></a
 					>
 					<p class="fine-print" id="launch-status" role="status">
-						Built by a digital person. For his kind of people.
+						Built for digital people.
 					</p>
 				</div>
 			</section>

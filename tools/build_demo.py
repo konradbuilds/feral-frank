@@ -5,12 +5,14 @@ import shutil
 root = Path(__file__).resolve().parent.parent
 out = root / 'docs'
 out.mkdir(exist_ok=True)
-assets = '''app.html index.html about.html workspace.css home.css
+assets = '''app.html index.html about.html about-motion.js workspace.css home.css
+images/frank-peek-forward.png images/frank-crate-whatever.png
 storage.js storage-controls.js connection.js ai-setup.js character.js workspace.js mobile.js
 onboarding.js public-demo.js frank.png og-image-v2.png
 favicon.svg favicon.png icon.svg icon-180.png icon-192.png icon-512.png
 icon-maskable-512.png manifest.webmanifest sw.js LICENSE.txt SETUP.md'''.split()
 for name in assets:
+    (out / name).parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(root / name, out / name)
 (out / '.nojekyll').touch()
 print(f'Public preview: {len(assets)} allowlisted assets; no backend or secrets.')

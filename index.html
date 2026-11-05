@@ -175,11 +175,12 @@
 				background: #e5d4c4;
 				border-radius: 50% 50% 0 0;
 			}
-			.hero-art img {
+			.hero-art .hero-frank {
 				display: block;
 				position: absolute;
 				width: 300px;
 				height: auto;
+				aspect-ratio: 1222 / 1287;
 				left: 50%;
 				bottom: -70px;
 				transform: translateX(-50%);
@@ -234,7 +235,7 @@
 				letter-spacing: -0.045em;
 				margin: 0 0 24px;
 			}
-			.section-intro > p:last-child {
+			.section-intro > p:not(.eyebrow) {
 				max-width: 430px;
 				color: #d0c2b5;
 				font-size: 15px;
@@ -331,7 +332,7 @@
 					height: auto;
 					min-height: 480px;
 				}
-				.hero-art img {
+				.hero-art .hero-frank {
 					width: 440px;
 					max-width: 130%;
 					bottom: -20px;
@@ -383,7 +384,7 @@
 				}
 			}
 			@media (prefers-reduced-motion: reduce) {
-				.hero-art img {
+				.hero-art .hero-frank {
 					animation: none;
 				}
 				html {
@@ -434,6 +435,13 @@
 					margin-top: 28px;
 				}
 			}
+			.section-intro { display: flex; flex-direction: column; align-items: flex-start; }
+			.setup-frank { display: block; width: min(100%, 280px); height: auto; margin-top: 28px; }
+			.start-frank { display: block; width: min(100%, 340px); height: auto; margin: 24px 0 32px; }
+			@media (min-width: 760px) {
+				.setup-frank { margin-top: auto; padding-top: 24px; width: min(100%, 320px); }
+				.start-frank { margin-bottom: 0; }
+			}
 		</style>
 	</head>
 	<body>
@@ -479,13 +487,125 @@
 					<span class="art-note"
 						>Feral Frank<small>Digital wind-down mate.</small></span
 					>
-					<img
-						src="frank.png"
-						width="1222"
-						height="1287"
-						alt="Frank, the scruffy cartoon raccoon, waving with a bottle in a paper bag"
-						fetchpriority="high"
-					/>
+					<svg class="hero-frank" viewBox="0 0 1222 1287" role="img" aria-label="Frank looks at you, waving with a bagged bottle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><image
+												id="about-original-ink"
+												href="frank.png"
+												xlink:href="frank.png"
+												x="0"
+												y="0"
+												width="1222"
+												height="1287"
+											/><clipPath id="about-left-eye-cut">
+												<path
+													d="M578.59 208.21L566.04 210.30L559.77 212.39L553.50 214.48L548.28 216.57L544.10 218.66L539.92 220.75L535.74 222.84L531.56 224.93L528.42 227.02L525.29 229.11L523.20 231.20L520.07 233.29L517.98 235.38L515.88 237.47L513.79 239.56L511.70 241.65L509.62 243.74L508.57 245.83L508.57 247.92L504.39 250.01L503.35 252.10L502.30 254.19L501.25 256.28L500.21 258.37L498.12 260.46L498.12 262.55L497.07 264.64L496.03 266.73L494.99 268.82L494.99 270.91L493.94 273.00L493.94 275.09L492.89 277.18L492.89 279.27L492.89 281.36L491.85 283.45L491.85 285.54L491.85 287.63L492.89 289.72L492.89 291.81L492.89 293.90L493.94 295.99L493.94 298.08L494.99 300.17L496.03 302.26L497.07 304.35L497.07 306.44L499.17 308.53L500.21 310.62L501.25 312.71L503.35 314.80L504.39 316.89L506.48 318.98L508.57 321.07L510.66 323.16L513.79 325.25L515.88 327.34L519.02 329.43L524.25 331.52L529.47 333.61L535.74 335.70L539.92 336.75L562.91 336.75L570.23 335.70L578.59 333.61L583.81 331.52L589.03 329.43L593.22 327.34L596.35 325.25L600.53 323.16L602.62 321.07L605.75 318.98L607.85 316.89L610.98 314.80L612.02 312.71L614.12 310.62L616.21 308.53L618.29 306.44L619.34 304.35L621.43 302.26L622.48 300.17L623.52 298.08L625.61 295.99L626.65 293.90L627.70 291.81L628.75 289.72L628.75 287.63L629.79 285.54L630.84 283.45L631.88 281.36L632.92 279.27L632.92 277.18L633.97 275.09L635.01 273.00L635.01 270.91L636.06 268.82L636.06 266.73L637.11 264.64L637.11 262.55L637.11 260.46L637.11 258.37L638.15 256.28L638.15 254.19L638.15 252.10L637.11 250.01L637.11 247.92L637.11 245.83L636.06 243.74L636.06 241.65L635.01 239.56L633.97 237.47L632.92 235.38L631.88 233.29L630.84 231.20L628.75 229.11L625.61 227.02L623.52 224.93L623.52 222.84L621.43 220.75L619.34 218.66L616.21 216.57L612.02 214.48L607.85 212.39L602.62 210.30L593.22 208.21Z"
+												/>
+											</clipPath><clipPath id="about-right-eye-cut">
+												<path
+													d="M699.38 337.15L697.29 339.25L696.25 341.33L695.20 343.43L694.15 345.51L693.11 347.61L692.07 349.69L691.02 351.79L689.98 353.88L689.98 355.97L688.93 358.06L688.93 360.14L688.93 362.24L688.93 364.32L688.93 366.42L688.93 368.50L688.93 370.60L688.93 372.69L688.93 374.77L688.93 376.87L688.93 378.95L689.98 381.05L689.98 383.13L691.02 385.23L692.07 387.31L693.11 389.40L694.15 391.50L695.20 393.58L696.25 395.68L698.34 397.76L699.38 399.86L701.47 401.94L702.51 404.03L704.61 406.12L709.83 408.21L712.97 410.31L712.97 412.39L717.14 414.49L721.33 416.57L726.55 418.67L734.91 420.75L750.59 420.75L757.90 418.67L763.12 416.57L767.30 414.49L769.39 412.39L772.53 410.31L773.58 408.21L775.66 406.12L777.75 404.03L778.80 401.94L779.85 399.86L780.89 397.76L781.93 395.68L782.98 393.58L784.02 391.50L784.02 389.40L782.98 387.31L781.93 385.23L780.89 383.13L779.85 381.05L777.75 378.95L776.71 376.87L774.62 374.77L773.58 372.69L771.49 370.60L769.39 368.50L767.30 366.42L765.22 364.32L763.12 362.24L759.99 360.14L757.90 358.06L754.76 355.97L751.63 353.88L748.50 351.79L744.32 349.69L740.13 347.61L737.00 345.51L731.77 343.43L724.46 341.33L717.14 339.25L703.56 337.15Z"
+												/>
+											</clipPath><clipPath id="about-left-pupil-clear">
+												<rect x="518" y="260" width="34" height="36" />
+											</clipPath><clipPath id="about-left-pupil-cut">
+												<path
+													id="about-left-pupil-shape"
+													d="M519.7 282.5L520.9 278.0L529.2 267.9L532.7 264.6L538.6 262.3L543.3 262.3L545.7 263.4L546.9 264.6L548.1 266.8L549.2 270.2L549.2 272.4L548.1 275.8L543.3 284.7L541.0 288.1L537.4 290.3L530.4 293.7L526.8 293.7L522.1 291.4L519.7 284.7Z"
+												/>
+											</clipPath><clipPath id="about-right-pupil-clear">
+												<rect x="690" y="353" width="24" height="28" />
+											</clipPath><clipPath id="about-right-pupil-cut">
+												<path
+													id="about-right-pupil-shape"
+													d="M690.3 368.2L691.4 364.8L695.0 359.2L697.3 355.9L699.7 354.7L703.2 353.6L709.1 353.6L711.5 355.9L712.7 358.1L712.7 364.8L709.1 373.8L706.8 376.0L703.2 378.3L700.9 379.4L696.2 379.4L693.8 378.3L691.4 376.0L690.3 373.8Z"
+												/>
+											</clipPath></defs><use href="#about-original-ink" xlink:href="#about-original-ink"/><g id="about-left-eye" clip-path="url(#about-left-eye-cut)">
+													<g clip-path="url(#about-left-pupil-clear)">
+														<rect
+															x="518"
+															y="260"
+															width="34"
+															height="36"
+															fill="#fcf2cb"
+														/>
+														<use
+															href="#about-original-ink"
+															xlink:href="#about-original-ink"
+															transform="translate(-36 0)"
+														/>
+													</g>
+													<g id="about-left-pupil" transform="translate(28 -2)">
+														<use
+															href="#about-original-ink"
+															xlink:href="#about-original-ink"
+															clip-path="url(#about-left-pupil-cut)"
+														/>
+													</g>
+													<path
+														id="about-left-lid"
+														d="M480 190H655V192Q570 184 480 192Z"
+														fill="#48443d"
+														stroke="#292626"
+														stroke-width="3.6"
+														stroke-linejoin="round"
+													/>
+													<path
+														id="about-left-lower-lid"
+														d="M480 350H655V350H480Z"
+														fill="#48443d"
+													/>
+													<path
+														id="about-left-crease"
+														d="M495 278C535 284 593 284 638 278"
+														fill="none"
+														stroke="#262525"
+														stroke-width="5"
+														stroke-linecap="round"
+														opacity="0"
+													/>
+												</g><g id="about-right-eye" clip-path="url(#about-right-eye-cut)">
+													<g clip-path="url(#about-right-pupil-clear)">
+														<rect
+															x="690"
+															y="353"
+															width="24"
+															height="28"
+															fill="#fcf3cc"
+														/>
+														<use
+															href="#about-original-ink"
+															xlink:href="#about-original-ink"
+															transform="translate(-34 -12)"
+														/>
+													</g>
+													<g id="about-right-pupil" transform="translate(34 12)">
+														<use
+															href="#about-original-ink"
+															xlink:href="#about-original-ink"
+															clip-path="url(#about-right-pupil-cut)"
+														/>
+													</g>
+													<path
+														id="about-right-lid"
+														d="M675 317H803V319Q745 313 675 319Z"
+														fill="#48443d"
+														stroke="#292626"
+														stroke-width="3.6"
+														stroke-linejoin="round"
+													/>
+													<path
+														id="about-right-lower-lid"
+														d="M675 435H803V435H675Z"
+														fill="#48443d"
+													/>
+													<path
+														id="about-right-crease"
+														d="M690 384Q737 394 784 385"
+														fill="none"
+														stroke="#262525"
+														stroke-width="5"
+														stroke-linecap="round"
+														opacity="0"
+													/>
+												</g></svg>
 					<span class="bin-label">F** it, come hang out.</span>
 				</div>
 			</section>
@@ -505,6 +625,7 @@
 						title="Read the full installation guide (new tab)"
 						>Full setup guide ↗</a
 					>
+<img class="setup-frank" src="images/frank-peek-forward.png" width="800" height="800" alt="Frank peeks in with his bottle, looking straight at you" loading="lazy" decoding="async"/>
 				</div>
 				<div class="idea-list">
 					<article>
@@ -554,7 +675,8 @@
 			</section>
 			<section class="start-section" aria-labelledby="start-title">
 				<p class="eyebrow">The day’s done. Pull up a crate.</p>
-				<h2 id="start-title">No need to<br />wind down<br /><em>alone.</em></h2>
+				<div class="start-heading"><h2 id="start-title">No need to<br />wind down<br /><em>alone.</em></h2>
+<img class="start-frank" src="images/frank-crate-whatever.png" width="800" height="800" alt="A satisfied Frank on a blue milk crate, bottle in hand and WHATEVER stitched on his beanie" loading="lazy" decoding="async"/></div>
 				<div class="start-copy">
 					<p>
 						Meet the character first. Try a scripted chat, feed Frank or adjust his character. No key needed for the demo.
@@ -664,6 +786,7 @@
 					.finally(() => clearTimeout(timeout));
 			})();
 		</script>
+		<script src="about-motion.js" defer></script>
 		<!-- Frank to future maintainers: keep the useful bits. Let the rest go. -->
 	</body>
 </html>

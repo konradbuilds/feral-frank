@@ -6,7 +6,7 @@ root = Path(__file__).resolve().parent.parent
 out = root / 'docs'
 out.mkdir(exist_ok=True)
 assets = '''app.html index.html about.html about-motion.js workspace.css home.css
-images/frank-peek-forward.png images/frank-crate-whatever.png
+images/frank-feeding.jpg images/frank-peek-forward.png images/frank-crate-whatever.png
 storage.js storage-controls.js connection.js ai-setup.js character.js workspace.js mobile.js
 onboarding.js public-demo.js frank.png og-image-v2.png
 favicon.svg favicon.png icon.svg icon-180.png icon-192.png icon-512.png
